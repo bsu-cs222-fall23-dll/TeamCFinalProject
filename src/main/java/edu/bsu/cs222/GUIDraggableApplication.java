@@ -20,7 +20,7 @@ public class GUIDraggableApplication extends Application {
 
         Node circle = new Circle(25, 25, 25, Color.YELLOW);
         Node rect = new Rectangle(150, 30, Color.RED);
-        Label control = new Label("Hello World");
+        Label control = new Label("Drag Me");
         control.setFont(Font.font(42));
 
         Node[] nodeArray = new Node[]{ circle, rect, control};
