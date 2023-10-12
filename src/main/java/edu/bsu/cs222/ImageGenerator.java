@@ -5,7 +5,7 @@ import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -14,19 +14,16 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 
-public class GUIDraggableApplication extends Application {
+public class ImageGenerator extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        Node circle = new Circle(25, 25, 25, Color.BLUE);
-        Node rect = new Rectangle(150, 30, Color.RED);
-        Label control = new Label("Drag Me");
-        control.setFont(Font.font(42));
-
-        Node[] nodeArray = new Node[]{ circle, rect, control};
 
 
-        stage.setScene(new Scene(createDraggableApp(nodeArray)));
+        Node[] nullNodeArray = new Node[]{};
+
+
+        stage.setScene(new Scene(createPane(40, 800, nullNodeArray)));
         stage.show();
     }
 
@@ -42,7 +39,7 @@ public class GUIDraggableApplication extends Application {
         for(int i = 0; i<nodeArray.length; i++){
             if(nodeArray[i] != null)
                 nodeArray[i].setTranslateX(i * 75);
-            nodeArray[i].setTranslateY(50);
+                nodeArray[i].setTranslateY(50);
         }
         var root = createPane(800, 600, nodeArray);
 
