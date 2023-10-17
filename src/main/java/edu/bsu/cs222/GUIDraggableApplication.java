@@ -24,10 +24,10 @@ public class GUIDraggableApplication extends Application {
 
         ImageGenerator generator = new ImageGenerator();
 
-        Node circle = new Circle(25, 25, 25, Color.BLUE);
-        Node rect = new Rectangle(150, 30, Color.RED);
-        Label control = new Label("Drag Me");
-        control.setFont(Font.font(42));
+        Node circle = new Circle(15, 15, 15, Color.BLUE);
+        Node rect = new Rectangle(45, 85, Color.RED);
+        Label control = new Label("Fishtank");
+        control.setFont(Font.font(34));
 
         Node[] nodeArray = new Node[]{ circle, rect, circle, control};
 
