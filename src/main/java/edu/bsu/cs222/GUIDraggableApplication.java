@@ -15,6 +15,7 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import javafx.scene.Group;
 
 
 public class GUIDraggableApplication extends Application {
@@ -28,18 +29,13 @@ public class GUIDraggableApplication extends Application {
         Label control = new Label("Drag Me");
         control.setFont(Font.font(42));
 
-        Node[] nodeArray = new Node[]{ circle, rect, control};
+        Node[] nodeArray = new Node[]{ circle, rect, circle, control};
 
 
-        GridPane testGridPane = generator.GetImageAsGridpane();
-
-        Node[] nullNodeArray = new Node[]{testGridPane};
-
-        stage.setScene(new Scene(testGridPane));
+        stage.setScene(new Scene(createDraggableApp(nodeArray)));
         stage.show();
 
-        //stage.setScene(new Scene(createDraggableApp(nodeArray)));
-        //stage.show();
+
     }
 
     public Pane createPane(int x, int y, Node[] content){
@@ -49,13 +45,19 @@ public class GUIDraggableApplication extends Application {
     }
 
 
-    public Parent createDraggableApp(Node[] nodeArray) {
+    public Parent createDraggableApp(Node[] nodeArray) throws Exception {
 
         for(int i = 0; i<nodeArray.length; i++){
             if(nodeArray[i] != null)
                 nodeArray[i].setTranslateX(i * 75);
             nodeArray[i].setTranslateY(50);
         }
+
+        ImageGenerator generator = new ImageGenerator();
+        Group imageGroup = generator.GetImageAsGroup();
+
+        nodeArray[0] = imageGroup;
+
         var root = createPane(800, 600, nodeArray);
 
         root.getChildren().forEach(this::makeDraggable);

@@ -1,41 +1,59 @@
 package edu.bsu.cs222;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import javafx.application.Application;
-import javafx.scene.Cursor;
-import javafx.scene.Node;
-import javafx.scene.Parent;
+import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 
 public class ImageGenerator extends Application {
 
-    public GridPane GetImageAsGridpane() {
+    public Group GetImageAsGroup() throws IOException {
 
-        GridPane gridpane = new GridPane();
-        Image image = new Image("File:TeamCFinalProject/src/main/Images/Sample-DeHo-Room");
-        ImageView pic = new ImageView();
-        pic.setFitWidth(130);
-        pic.setFitHeight(130);
-        pic.setImage(image);
-        gridpane.add(pic, 400, 400);
+        InputStream fileLocationStream = new FileInputStream("src/main/Images/Sample-DeHo-Room.png");
 
-        return gridpane;
+        Image roomImage = new Image(fileLocationStream);
+
+        ImageView viewableRoomImage = new ImageView();
+
+        viewableRoomImage.setImage(roomImage);
+
+        viewableRoomImage.setX(10);
+        viewableRoomImage.setY(10);
+        viewableRoomImage.setFitWidth(575);
+        viewableRoomImage.setPreserveRatio(true);
+
+        Group root = new Group(viewableRoomImage);
+
+        return root;
 
     }
 
 
-    @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage stage) throws IOException {
+        InputStream fileLocationStream = new FileInputStream("src/main/Images/Sample-DeHo-Room.png");
 
+        Image roomImage = new Image(fileLocationStream);
+
+        ImageView viewableRoomImage = new ImageView();
+
+        viewableRoomImage.setImage(roomImage);
+
+        viewableRoomImage.setX(10);
+        viewableRoomImage.setY(10);
+        viewableRoomImage.setFitWidth(575);
+        viewableRoomImage.setPreserveRatio(true);
+
+        Group root = new Group(viewableRoomImage);
+
+    }
+    public static void main(String args[]) {
+        launch(args);
     }
 }
+
