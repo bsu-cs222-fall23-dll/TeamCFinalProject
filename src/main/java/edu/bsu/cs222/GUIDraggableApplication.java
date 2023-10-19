@@ -6,10 +6,10 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.GridPane;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
@@ -23,6 +23,7 @@ public class GUIDraggableApplication extends Application {
     public void start(Stage stage) throws Exception {
 
         ImageGenerator generator = new ImageGenerator();
+        InteractiveFeatures feature = new InteractiveFeatures();
 
         Node circle = new Circle(15, 15, 15, Color.BLUE);
         Node rect = new Rectangle(45, 85, Color.RED);
@@ -31,10 +32,16 @@ public class GUIDraggableApplication extends Application {
 
         Node[] nodeArray = new Node[]{ circle, rect, circle, control};
 
+        BorderPane borderPane = new BorderPane();
+        HBox hBox = feature.addHBox();
+        VBox vBox = feature.addVBox();
+        borderPane.setTop(hBox);
+        borderPane.setLeft(vBox);
+        borderPane.setCenter(createDraggableApp(nodeArray));
+//        borderPane.setRight();
 
-        stage.setScene(new Scene(createDraggableApp(nodeArray)));
+        stage.setScene(new Scene(borderPane));
         stage.show();
-
 
     }
 
@@ -43,7 +50,6 @@ public class GUIDraggableApplication extends Application {
         pane.setPrefSize(x, y);
         return pane;
     }
-
 
     public Parent createDraggableApp(Node[] nodeArray) throws Exception {
 
