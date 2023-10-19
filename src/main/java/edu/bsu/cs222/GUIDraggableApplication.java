@@ -6,10 +6,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
@@ -30,13 +27,18 @@ public class GUIDraggableApplication extends Application {
         Label control = new Label("Fishtank");
         control.setFont(Font.font(34));
 
-        Node[] nodeArray = new Node[]{ circle, rect, circle, control};
+        Node[] nodeArray = new Node[]{ rect, circle, control};
 
         BorderPane borderPane = new BorderPane();
         HBox hBox = feature.addHBox();
         VBox vBox = feature.addVBox();
         borderPane.setTop(hBox);
         borderPane.setLeft(vBox);
+
+        Group imageGroup = generator.GetImageAsGroup();
+        var root = createPane(800, 600, imageGroup.getChildren().toArray(new Node[0]));
+        borderPane.setRight(root);
+
         borderPane.setCenter(createDraggableApp(nodeArray));
 
         stage.setScene(new Scene(borderPane));
@@ -58,10 +60,10 @@ public class GUIDraggableApplication extends Application {
             nodeArray[i].setTranslateY(50);
         }
 
-        ImageGenerator generator = new ImageGenerator();
-        Group imageGroup = generator.GetImageAsGroup();
-
-        nodeArray[0] = imageGroup;
+//        ImageGenerator generator = new ImageGenerator();
+//        Group imageGroup = generator.GetImageAsGroup();
+//
+//        nodeArray[0] = imageGroup;
 
         var root = createPane(800, 600, nodeArray);
 
