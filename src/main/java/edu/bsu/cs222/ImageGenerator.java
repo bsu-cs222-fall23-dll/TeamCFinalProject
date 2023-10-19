@@ -15,7 +15,7 @@ public class ImageGenerator extends Application {
 
     public Group GetImageAsGroup() throws IOException {
 
-        InputStream fileLocationStream = new FileInputStream("src/main/Images/Sample-DeHo-Room.png");
+        InputStream fileLocationStream = new FileInputStream("src/main/Images/TestDehoRoom.png");
 
         Image roomImage = new Image(fileLocationStream);
 
@@ -36,7 +36,7 @@ public class ImageGenerator extends Application {
 
 
     public void start(Stage stage) throws IOException {
-        InputStream fileLocationStream = new FileInputStream("src/main/Images/Sample-DeHo-Room.png");
+        InputStream fileLocationStream = new FileInputStream("src/main/Images/TestDehoRoom.png");
 
         Image roomImage = new Image(fileLocationStream);
 

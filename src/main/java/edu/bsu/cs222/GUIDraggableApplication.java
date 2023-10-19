@@ -38,7 +38,6 @@ public class GUIDraggableApplication extends Application {
         borderPane.setTop(hBox);
         borderPane.setLeft(vBox);
         borderPane.setCenter(createDraggableApp(nodeArray));
-//        borderPane.setRight();
 
         stage.setScene(new Scene(borderPane));
         stage.show();
