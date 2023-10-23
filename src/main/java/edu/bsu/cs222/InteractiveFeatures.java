@@ -63,7 +63,7 @@ public class InteractiveFeatures {
         hbox.setStyle("-fx-background-color: #b51212;");
 
         Text title = new Text("Ball State University: Residence Halls");
-        title.setFont(Font.font("Arial", FontWeight.BOLD, 25));
+        title.setFont(Font.font("Arial", FontWeight.BOLD, 27));
         title.setFill(Color.WHITESMOKE);
 
         hbox.getChildren().add(title);
