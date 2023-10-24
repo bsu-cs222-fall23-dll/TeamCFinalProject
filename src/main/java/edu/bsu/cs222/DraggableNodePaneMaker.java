@@ -1,6 +1,7 @@
 package edu.bsu.cs222;
 
 import javafx.application.Application;
+import javafx.geometry.Insets;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -11,16 +12,17 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.Group;
 
 
-public class GUIDraggableApplication extends Application {
+public class DraggableNodePaneMaker extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
         ImageGenerator generator = new ImageGenerator();
-        InteractiveFeatures feature = new InteractiveFeatures();
 
         Node circle = new Circle(15, 15, 15, Color.BLUE);
         Node rect = new Rectangle(45, 85, Color.RED);
@@ -30,8 +32,8 @@ public class GUIDraggableApplication extends Application {
         Node[] nodeArray = new Node[]{ rect, circle, control};
 
         BorderPane borderPane = new BorderPane();
-        HBox hBox = feature.addHBox();
-        VBox vBox = feature.addVBox();
+        HBox hBox = addHBox();
+        VBox vBox = addVBox();
         borderPane.setTop(hBox);
         borderPane.setLeft(vBox);
 
@@ -50,6 +52,34 @@ public class GUIDraggableApplication extends Application {
         Pane pane = new Pane(content);
         pane.setPrefSize(x, y);
         return pane;
+    }
+    public HBox addHBox() {
+        HBox hbox = new HBox();
+        hbox.setPadding(new Insets(15, 12, 15, 12));
+        hbox.setSpacing(10);
+        hbox.setStyle("-fx-background-color: #b51212;");
+
+        Text title = new Text("Ball State University: Residence Halls");
+        title.setFont(Font.font("Arial", FontWeight.BOLD, 27));
+        title.setFill(Color.WHITESMOKE);
+
+        hbox.getChildren().add(title);
+
+        return hbox;
+    }
+
+    public VBox addVBox() {
+        InteractiveFeatures features = new InteractiveFeatures();
+
+        VBox vbox = new VBox();
+        vbox.setPadding(new Insets(10));
+        vbox.setSpacing(8);
+
+        Text title = new Text("Dorm Selection");
+        title.setFont(Font.font("Arial", FontWeight.BOLD, 20));
+        vbox.getChildren().addAll(title, features.createButtons());
+
+        return vbox;
     }
 
     public Parent createDraggableApp(Node[] nodeArray) {
