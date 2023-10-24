@@ -13,11 +13,6 @@ import javafx.scene.Group;
 import java.io.IOException;
 
 public class InteractiveFeatures {
-    /*
-    - make buttons
-    - add buttons to gradle
-    - make buttons switch between dorm images
-     */
 
     public Button createButtons() {
         Button dehorityButton = new Button();
@@ -80,26 +75,9 @@ public class InteractiveFeatures {
         title.setFont(Font.font("Arial", FontWeight.BOLD, 20));
         vbox.getChildren().addAll(title, createButtons());
 
-//        vbox.getChildren().add(createButtons());
-
-//        for (int i=0; i<4; i++) {
-//            VBox.setMargin(options[i], new Insets(0, 0, 0, 8));
-//            vbox.getChildren().add(options[i]);
-//        }
-
         return vbox;
     }
 
-    public void displayRoomFromButton(Button button) throws IOException {
-        ImageGenerator generator = new ImageGenerator();
-        Group imageGroup = generator.GetImageAsGroup();
-
-        if (button.getText().equals("Dehority")) {
-            button.setOnAction(e -> {
-                //display image this way
-            });
-        }
-    }
 }
 
 

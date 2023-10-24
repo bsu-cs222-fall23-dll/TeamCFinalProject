@@ -52,7 +52,7 @@ public class GUIDraggableApplication extends Application {
         return pane;
     }
 
-    public Parent createDraggableApp(Node[] nodeArray) throws Exception {
+    public Parent createDraggableApp(Node[] nodeArray) {
 
         for(int i = 0; i<nodeArray.length; i++){
             if(nodeArray[i] != null)
