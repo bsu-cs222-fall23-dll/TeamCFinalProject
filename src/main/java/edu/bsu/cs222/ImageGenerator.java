@@ -47,8 +47,6 @@ public class ImageGenerator extends Application {
         viewableRoomImage.setPreserveRatio(true);
 
     }
-    public static void main(String args[]) {
-        launch(args);
-    }
+
 }
 
