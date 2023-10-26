@@ -98,20 +98,20 @@ public class DraggableNodePaneMaker extends Application {
         return root;
     }
 
-    private double startX;
-    private double startY;
+    private double startPointX;
+    private double startPointY;
 
     private void makeDraggable(Node node){
         node.setOnMousePressed(obj -> {
-            startX = obj.getSceneX() - node.getTranslateX();
-            startY = obj.getSceneY() - node.getTranslateY();
+            startPointX = obj.getSceneX() - node.getTranslateX();
+            startPointY = obj.getSceneY() - node.getTranslateY();
 
             node.setCursor(Cursor.CLOSED_HAND);
         });
 
         node.setOnMouseDragged(obj -> {
-            node.setTranslateX(obj.getSceneX() - startX);
-            node.setTranslateY(obj.getSceneY() - startY);
+            node.setTranslateX(obj.getSceneX() - startPointX);
+            node.setTranslateY(obj.getSceneY() - startPointY);
         });
 
     }
