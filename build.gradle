@@ -21,4 +21,4 @@ javafx {
     modules = [ 'javafx.controls', 'javafx.fxml' ]
     version = '13.0.2'
 }
-mainClassName = 'edu.bsu.cs222.GUIDraggableApplication'
+mainClassName = 'edu.bsu.cs222.DraggableNodePaneMaker'
