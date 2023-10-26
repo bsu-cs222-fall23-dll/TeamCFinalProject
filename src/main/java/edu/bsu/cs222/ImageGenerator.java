@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import javafx.application.Application;
 import javafx.scene.Group;
-import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
@@ -28,9 +27,7 @@ public class ImageGenerator extends Application {
         viewableRoomImage.setFitWidth(575);
         viewableRoomImage.setPreserveRatio(true);
 
-        Group root = new Group(viewableRoomImage);
-
-        return root;
+        return new Group(viewableRoomImage);
 
     }
 
@@ -49,11 +46,7 @@ public class ImageGenerator extends Application {
         viewableRoomImage.setFitWidth(575);
         viewableRoomImage.setPreserveRatio(true);
 
-        Group root = new Group(viewableRoomImage);
+    }
 
-    }
-    public static void main(String args[]) {
-        launch(args);
-    }
 }
 
