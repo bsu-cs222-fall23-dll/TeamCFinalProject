@@ -85,9 +85,10 @@ public class DraggableNodePaneMaker extends Application {
     public Parent createDraggableApp(Node[] nodeArray) {
 
         for(int i = 0; i<nodeArray.length; i++){
-            if(nodeArray[i] != null)
+            if(nodeArray[i] != null) {
                 nodeArray[i].setTranslateX(i * 75);
-            nodeArray[i].setTranslateY(50);
+                nodeArray[i].setTranslateY(50);
+            }
         }
 
         var root = createPane(800, 600, nodeArray);
