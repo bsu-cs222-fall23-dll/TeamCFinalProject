@@ -24,12 +24,15 @@ public class DraggableNodePaneMaker extends Application {
 
         ImageGenerator generator = new ImageGenerator();
 
-        Node circle = new Circle(15, 15, 15, Color.BLUE);
-        Node rect = new Rectangle(45, 85, Color.RED);
+        Node chair = new Circle(30, 30, 30, Color.BLUE);
+        Node bed = new Rectangle(135, 215, Color.RED);
+        Node desk = new Rectangle(65, 185, Color.GREEN);
+        Node drawers = new Rectangle(65, 185, Color.YELLOW);
+        Node fridge = new Rectangle(35, 35, Color.CYAN);
         Label control = new Label("Fishtank");
         control.setFont(Font.font(34));
 
-        Node[] nodeArray = new Node[]{ rect, circle, control};
+        Node[] nodeArray = new Node[]{chair, desk, chair, drawers, fridge, bed};
 
         BorderPane borderPane = new BorderPane();
         HBox hBox = addHBox();
