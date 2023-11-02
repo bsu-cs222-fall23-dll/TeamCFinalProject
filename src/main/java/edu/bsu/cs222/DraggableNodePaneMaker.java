@@ -28,7 +28,7 @@ public class DraggableNodePaneMaker extends Application {
         Node bed = new Rectangle(135, 215, Color.RED);
         Node desk = new Rectangle(100, 95, Color.GREEN);
         Node drawers = new Rectangle(100, 95, Color.YELLOW);
-        Node fridge = new Rectangle(60, 60, Color.DARKCYAN);
+        Node fridge = new Rectangle(65, 65, Color.DARKCYAN);
         Label control = new Label("Fishtank");
         control.setFont(Font.font(34));
 
@@ -40,7 +40,7 @@ public class DraggableNodePaneMaker extends Application {
         borderPane.setTop(hBox);
         borderPane.setLeft(vBox);
 
-        Group imageGroup = generator.GetImageAsGroup();
+        Group imageGroup = generator.GetImageAsGroup("Kinghorn-Room.png");
         var root = createPane(800, 600, imageGroup.getChildren().toArray(new Node[0]));
         borderPane.setRight(root);
 
