@@ -29,10 +29,11 @@ public class DraggableNodePaneMaker extends Application {
         Node desk = new Rectangle(100, 95, Color.GREEN);
         Node drawers = new Rectangle(100, 95, Color.YELLOW);
         Node fridge = new Rectangle(65, 65, Color.DARKCYAN);
+        Node trashcan = new Rectangle(55,30, Color.SANDYBROWN);
         Label control = new Label("Fishtank");
         control.setFont(Font.font(34));
 
-        Node[] nodeArray = new Node[]{chair, desk, drawers, fridge, bed};
+        Node[] nodeArray = new Node[]{chair, desk, drawers, fridge, bed, trashcan};
 
         BorderPane borderPane = new BorderPane();
         HBox hBox = addHBox();
