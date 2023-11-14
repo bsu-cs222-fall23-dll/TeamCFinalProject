@@ -12,9 +12,9 @@ import javafx.stage.Stage;
 
 public class ImageGenerator extends Application {
 
-    public Group GetImageAsGroup() throws IOException {
+    public Group GetImageAsGroup(String imageName) throws IOException {
 
-        InputStream fileLocationStream = new FileInputStream("src/main/Images/TestDehoRoom.png");
+        InputStream fileLocationStream = new FileInputStream("src/main/Images/" + imageName);
 
         Image roomImage = new Image(fileLocationStream);
 
