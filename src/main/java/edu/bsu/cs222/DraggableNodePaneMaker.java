@@ -74,6 +74,7 @@ public class DraggableNodePaneMaker extends Application {
 
     public VBox addVBox() {
         InteractiveFeatures features = new InteractiveFeatures();
+        features.initBtnsArray();
 
         VBox vbox = new VBox();
         vbox.setPadding(new Insets(10));
@@ -81,7 +82,7 @@ public class DraggableNodePaneMaker extends Application {
 
         Text title = new Text("Dorm Selection");
         title.setFont(Font.font("Arial", FontWeight.BOLD, 20));
-        vbox.getChildren().addAll(title, features.createButtons());
+        vbox.getChildren().addAll(title, features.getGrid());
 
         return vbox;
     }

@@ -1,48 +1,34 @@
 package edu.bsu.cs222;
 
 import javafx.scene.control.*;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 
 
 public class InteractiveFeatures {
+    private Button[] buttons = new Button[11];
+    private String[] dormNames = {"Dehority",
+    "Park", "North", "Botsford/Swinford", "Kinghorn",
+    "North West", "Noyer", "Schmidt/Wilson", "Studebaker East",
+    "Studebaker West", "Woodworth"};
 
-    public Button createButtons() {
-        Button dehorityButton = new Button();
-        dehorityButton.setText("Dehority");
-
-        Button parkButton = new Button();
-        parkButton.setText("Park");
-
-        Button botswinSwinfordButton = new Button();
-        botswinSwinfordButton.setText("Botswin/Swinford");
-
-        Button northButton = new Button();
-        northButton.setText("North");
-
-        Button kinghornButton = new Button();
-        kinghornButton.setText("Kinghorn");
-
-        Button northWest = new Button();
-        northWest.setText("North West");
-
-        Button noyerButton = new Button();
-        noyerButton.setText("Noyer");
-
-        Button stuEastButton = new Button();
-        stuEastButton.setText("Studebaker East");
-
-        Button stuWestButton = new Button();
-        stuWestButton.setText("Studebaker West");
-
-        Button woodworthButton = new Button();
-        woodworthButton.setText("Woodworth");
-
-        Button schmidtWilsonButton = new Button();
-        schmidtWilsonButton.setText("Schmidt/Wilson");
-
-        return dehorityButton;
+    public Pane getGrid() {
+        int i = 0;
+        GridPane gridPane = new GridPane();
+        for(Button b : buttons) {
+            gridPane.add(b, 0, i*(i+(int)b.getWidth()));
+            i++;
+        }
+        return gridPane;
     }
 
-
+    public void initBtnsArray() {
+        int i = 0;
+        for(int j = 0; j < buttons.length; j++) {
+            buttons[i] = new Button(dormNames[j]);
+            i++;
+        }
+    }
 }
 
 
