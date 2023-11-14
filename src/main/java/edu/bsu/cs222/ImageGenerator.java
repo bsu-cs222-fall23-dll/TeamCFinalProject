@@ -1,6 +1,7 @@
 package edu.bsu.cs222;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import javafx.application.Application;
@@ -12,9 +13,9 @@ import javafx.stage.Stage;
 
 public class ImageGenerator extends Application {
 
-    public Group GetImageAsGroup(String imageName) throws IOException {
+    public Group GetImageAsGroup(String buttonName) throws FileNotFoundException {
 
-        InputStream fileLocationStream = new FileInputStream("src/main/Images/" + imageName);
+        InputStream fileLocationStream = new FileInputStream("src/main/Images/Test" + buttonName + "Room.png");
 
         Image roomImage = new Image(fileLocationStream);
 
@@ -33,7 +34,7 @@ public class ImageGenerator extends Application {
 
 
     public void start(Stage stage) throws IOException {
-        InputStream fileLocationStream = new FileInputStream("src/main/Images/TestDehoRoom.png");
+        InputStream fileLocationStream = new FileInputStream("src/main/Images/TestDehorityRoom.png");
 
         Image roomImage = new Image(fileLocationStream);
 
