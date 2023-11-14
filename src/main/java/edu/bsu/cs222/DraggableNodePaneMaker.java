@@ -28,6 +28,8 @@ public class DraggableNodePaneMaker extends Application {
         ImageGenerator generator = new ImageGenerator();
         InteractiveFeatures features = new InteractiveFeatures();
 
+        NodeMaker node = new NodeMaker();
+
         Node chair = new Circle(30, 30, 30, Color.BLUE);
         Node bed = new Rectangle(135, 215, Color.RED);
         Node desk = new Rectangle(100, 95, Color.GREEN);
@@ -37,7 +39,7 @@ public class DraggableNodePaneMaker extends Application {
         Label control = new Label("Fishtank");
         control.setFont(Font.font(34));
 
-        Node[] nodeArray = new Node[]{chair, desk, drawers, fridge, bed, trashcan};
+        Node[] nodeArray = new Node[]{chair, desk, drawers, fridge, node.makeBed(), trashcan};
 
         HBox hBox = addHBox();
         VBox vBox = addVBox();
