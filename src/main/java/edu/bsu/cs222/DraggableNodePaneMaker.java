@@ -39,52 +39,10 @@ public class DraggableNodePaneMaker extends Application {
 
         Node[] nodeArray = new Node[]{chair, desk, drawers, fridge, bed, trashcan};
 
-//        BorderPane borderPane = new BorderPane();
-
         HBox hBox = addHBox();
         VBox vBox = addVBox();
         borderPane.setTop(hBox);
         borderPane.setLeft(vBox);
-//
-//        Button button = new Button("Dehority");
-//        button.setOnAction(new EventHandler<ActionEvent>() {
-//            @Override
-//            public void handle(ActionEvent e) {
-//                try {
-//                    Pane dehority = features.getDormImage(button.getText());
-//                    borderPane.setRight(dehority);
-//                } catch (FileNotFoundException ex) {
-//                    throw new RuntimeException(ex);
-//                }
-//            }
-//        });
-
-// JOSH CODE
-//        Group imageGroup = generator.GetImageAsGroup("TestKinghornRoom.png");
-//        var root = createPane(800, 600, imageGroup.getChildren().toArray(new Node[0]));
-//        borderPane.setRight(root);
-
-
-//        Node circle = new Circle(15, 15, 15, Color.BLUE);
-//        Node rect = new Rectangle(45, 85, Color.RED);
-//        Label control = new Label("Fishtank");
-//        control.setFont(Font.font(34));
-
-//        Node[] nodeArray = new Node[]{ rect, circle, control};
-//
-//        HBox hBox = addHBox();
-//        VBox vBox = addVBox();
-//        borderPane.setTop(hBox);
-//        borderPane.setLeft(vBox);
-
-//        Group imageGroup = generator.GetImageAsGroup("Dehority");
-
-//        Pane imageGroup = features.getDormImage("Dehority");
-//        var root = createPane(800, 600, imageGroup.getChildren().toArray(new Node[0]));//
-//        borderPane.setRight(imageGroup);
-
-//        borderPane.setCenter(createDraggableApp(nodeArray));
-//
         stage.setScene(new Scene(borderPane));
         stage.show();
 
@@ -118,14 +76,6 @@ public class DraggableNodePaneMaker extends Application {
         vbox.setPadding(new Insets(10));
         vbox.setSpacing(8);
 
-//        Button[] buttons = new Button[11];
-//        String[] dormNames = {"Dehority",
-//                "Park", "North", "Botsford/Swinford", "Kinghorn",
-//                "North West", "Noyer", "Schmidt/Wilson", "Studebaker East",
-//                "Studebaker West", "Woodworth"};
-//        int i = 0;
-//        for(int j = 0; j < buttons.length; j++) {
-//            Button btn = new Button(dormNames[j]);
         Button button1 = new Button("Dehority");
         Button button2 = new Button("Park");
         Button button3 = new Button("North");
@@ -268,9 +218,6 @@ public class DraggableNodePaneMaker extends Application {
                 }
             }
         });
-//            buttons[i] = button1;
-//            i++;
-//        }
 
         Text title = new Text("Dorm Selection");
         title.setFont(Font.font("Arial", FontWeight.BOLD, 20));
@@ -280,21 +227,6 @@ public class DraggableNodePaneMaker extends Application {
         return vbox;
     }
 
-//    public Button dehorityButton() {
-//        Button button = new Button("Dehority");
-//        button.setOnAction(new EventHandler<ActionEvent>() {
-//            @Override
-//            public void handle(ActionEvent e) {
-//                try {
-//                    Pane dehority = getDormImage(button.getText());
-//                    borderPane.setRight(dehority); // works because borderPane is full variable and in start
-//                } catch (FileNotFoundException ex) {
-//                    throw new RuntimeException(ex);
-//                }
-//            }
-//        });
-//        return button;
-//    }
 
     public Pane getDormImage(String dormName) throws FileNotFoundException {
         ImageGenerator generator = new ImageGenerator();
@@ -310,46 +242,9 @@ public class DraggableNodePaneMaker extends Application {
                 borderPane.setRight(imageGroupPane);
                 break;
             }
-//            else {
-//                imageGroup = generator.GetImageAsGroup("ImageNotFound");
-//                imageGroupPane = draggable.createPane(800, 600, imageGroup.getChildren().toArray(new Node[0]));
-//                draggable.borderPane.setRight(imageGroupPane);
-//            }
         }
         return imageGroupPane;
     }
-
-//    public void initBtnsArray() {
-////        DraggableNodePaneMaker draggable = new DraggableNodePaneMaker()
-//        InteractiveFeatures features = new InteractiveFeatures();
-//
-//        int i = 0;
-//        for(int j = 0; j < features.buttons.length; j++) {
-//            Button button = new Button(features.dormNames[j]);
-//            button.setOnAction(new EventHandler<ActionEvent>() {
-//                @Override public void handle(ActionEvent e) {
-//                    try {
-//                        System.out.println(e.toString());
-//                        Pane image = features.getDormImage(button.getText());
-//                        borderPane.setRight(image); // doesn't work b/c borderpane is empty and not in start
-//
-////                        Button o = (Button) e.getTarget();
-////                        String name = o.getName();
-////                        getDormImage(String.valueOf(o));
-////                        draggable.borderPane.setCenter(draggable.createDraggableApp(nodeArray));
-////                        draggable.stage.setScene(new Scene(draggable.borderPane));
-////                        draggable.stage.show();
-//
-//                    } catch (FileNotFoundException ex) {
-//                        throw new RuntimeException(ex);
-//                    }
-//                }
-//            });
-//            features.buttons[i] = button;
-//            i++;
-//        }
-//    }
-
     public Parent createDraggableApp(Node[] nodeArray) {
 
         for(int i = 0; i<nodeArray.length; i++){
