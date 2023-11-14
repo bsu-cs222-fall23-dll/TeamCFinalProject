@@ -1,12 +1,12 @@
 package edu.bsu.cs222;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
-import javafx.scene.Cursor;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -15,34 +15,58 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.scene.Group;
+
+import java.io.FileNotFoundException;
 
 
 public class DraggableNodePaneMaker extends Application {
+    public BorderPane borderPane = new BorderPane();
+    public Stage stage = new Stage();
+
     @Override
-    public void start(Stage stage) throws Exception {
-
+    public void start(Stage primaryStage) throws Exception {
         ImageGenerator generator = new ImageGenerator();
+        InteractiveFeatures features = new InteractiveFeatures();
 
-        Node circle = new Circle(15, 15, 15, Color.BLUE);
-        Node rect = new Rectangle(45, 85, Color.RED);
-        Label control = new Label("Fishtank");
-        control.setFont(Font.font(34));
-
-        Node[] nodeArray = new Node[]{ rect, circle, control};
-
-        BorderPane borderPane = new BorderPane();
         HBox hBox = addHBox();
         VBox vBox = addVBox();
         borderPane.setTop(hBox);
         borderPane.setLeft(vBox);
+//
+//        Button button = new Button("Dehority");
+//        button.setOnAction(new EventHandler<ActionEvent>() {
+//            @Override
+//            public void handle(ActionEvent e) {
+//                try {
+//                    Pane dehority = features.getDormImage(button.getText());
+//                    borderPane.setRight(dehority);
+//                } catch (FileNotFoundException ex) {
+//                    throw new RuntimeException(ex);
+//                }
+//            }
+//        });
 
-        Group imageGroup = generator.GetImageAsGroup();
-        var root = createPane(800, 600, imageGroup.getChildren().toArray(new Node[0]));
-        borderPane.setRight(root);
 
-        borderPane.setCenter(createDraggableApp(nodeArray));
+//        Node circle = new Circle(15, 15, 15, Color.BLUE);
+//        Node rect = new Rectangle(45, 85, Color.RED);
+//        Label control = new Label("Fishtank");
+//        control.setFont(Font.font(34));
 
+//        Node[] nodeArray = new Node[]{ rect, circle, control};
+//
+//        HBox hBox = addHBox();
+//        VBox vBox = addVBox();
+//        borderPane.setTop(hBox);
+//        borderPane.setLeft(vBox);
+
+//        Group imageGroup = generator.GetImageAsGroup("Dehority");
+
+//        Pane imageGroup = features.getDormImage("Dehority");
+//        var root = createPane(800, 600, imageGroup.getChildren().toArray(new Node[0]));//
+//        borderPane.setRight(imageGroup);
+
+//        borderPane.setCenter(createDraggableApp(nodeArray));
+//
         stage.setScene(new Scene(borderPane));
         stage.show();
 
@@ -68,7 +92,7 @@ public class DraggableNodePaneMaker extends Application {
         return hbox;
     }
 
-    public VBox addVBox() {
+    public VBox addVBox() throws FileNotFoundException {
         InteractiveFeatures features = new InteractiveFeatures();
         features.initBtnsArray();
 
@@ -76,12 +100,237 @@ public class DraggableNodePaneMaker extends Application {
         vbox.setPadding(new Insets(10));
         vbox.setSpacing(8);
 
+//        Button[] buttons = new Button[11];
+//        String[] dormNames = {"Dehority",
+//                "Park", "North", "Botsford/Swinford", "Kinghorn",
+//                "North West", "Noyer", "Schmidt/Wilson", "Studebaker East",
+//                "Studebaker West", "Woodworth"};
+//        int i = 0;
+//        for(int j = 0; j < buttons.length; j++) {
+//            Button btn = new Button(dormNames[j]);
+        Button button1 = new Button("Dehority");
+        Button button2 = new Button("Park");
+        Button button3 = new Button("North");
+        Button button4 = new Button("Botsford/Swinford");
+        Button button5 = new Button("Kinghorn");
+        Button button6 = new Button("North West");
+        Button button7 = new Button("Noyer");
+        Button button8 = new Button("Schmidt/Wilson");
+        Button button9 = new Button("Studebaker East");
+        Button button10 = new Button("Studebaker West");
+        Button button11 = new Button("Woodworth");
+        button1.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent e) {
+                    try {
+                        Pane dehority = features.getDormImage(button1.getText());
+                        borderPane.setRight(dehority); // works because borderPane is full variable and in start
+                    } catch (FileNotFoundException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                }
+            });
+
+        button2.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                try {
+                    Pane dehority = features.getDormImage(button2.getText());
+                    borderPane.setRight(dehority); // works because borderPane is full variable and in start
+                } catch (FileNotFoundException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
+
+        button3.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                try {
+                    Pane dehority = features.getDormImage(button3.getText());
+                    borderPane.setRight(dehority); // works because borderPane is full variable and in start
+                } catch (FileNotFoundException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
+
+        button4.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                try {
+                    Pane dehority = features.getDormImage(button4.getText());
+                    borderPane.setRight(dehority); // works because borderPane is full variable and in start
+                } catch (FileNotFoundException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
+
+        button5.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                try {
+                    Pane dehority = features.getDormImage(button5.getText());
+                    borderPane.setRight(dehority); // works because borderPane is full variable and in start
+                } catch (FileNotFoundException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
+
+        button6.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                try {
+                    Pane dehority = features.getDormImage(button6.getText());
+                    borderPane.setRight(dehority); // works because borderPane is full variable and in start
+                } catch (FileNotFoundException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
+
+        button7.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                try {
+                    Pane dehority = features.getDormImage(button7.getText());
+                    borderPane.setRight(dehority); // works because borderPane is full variable and in start
+                } catch (FileNotFoundException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
+
+        button8.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                try {
+                    Pane dehority = features.getDormImage(button8.getText());
+                    borderPane.setRight(dehority); // works because borderPane is full variable and in start
+                } catch (FileNotFoundException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
+
+        button9.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                try {
+                    Pane dehority = features.getDormImage(button9.getText());
+                    borderPane.setRight(dehority); // works because borderPane is full variable and in start
+                } catch (FileNotFoundException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
+
+        button10.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                try {
+                    Pane dehority = features.getDormImage(button10.getText());
+                    borderPane.setRight(dehority); // works because borderPane is full variable and in start
+                } catch (FileNotFoundException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
+
+        button11.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                try {
+                    Pane dehority = features.getDormImage(button11.getText());
+                    borderPane.setRight(dehority); // works because borderPane is full variable and in start
+                } catch (FileNotFoundException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
+//            buttons[i] = button1;
+//            i++;
+//        }
+
         Text title = new Text("Dorm Selection");
         title.setFont(Font.font("Arial", FontWeight.BOLD, 20));
-        vbox.getChildren().addAll(title, features.getGrid());
+        vbox.getChildren().addAll(title, button1, button2, button3, button4, button5,
+                button6, button7, button8, button9, button10, button11); //features.getButtonGrid()
 
         return vbox;
     }
+
+//    public Button dehorityButton() {
+//        Button button = new Button("Dehority");
+//        button.setOnAction(new EventHandler<ActionEvent>() {
+//            @Override
+//            public void handle(ActionEvent e) {
+//                try {
+//                    Pane dehority = getDormImage(button.getText());
+//                    borderPane.setRight(dehority); // works because borderPane is full variable and in start
+//                } catch (FileNotFoundException ex) {
+//                    throw new RuntimeException(ex);
+//                }
+//            }
+//        });
+//        return button;
+//    }
+
+    public Pane getDormImage(String dormName) throws FileNotFoundException {
+        ImageGenerator generator = new ImageGenerator();
+//        DraggableNodePaneMaker draggable = new DraggableNodePaneMaker();
+        InteractiveFeatures features = new InteractiveFeatures();
+
+        Group imageGroup;
+        Pane imageGroupPane = null;
+        for(Button b : features.buttons) {
+            if(b.getText() == dormName) {
+                imageGroup = generator.GetImageAsGroup(dormName);
+                imageGroupPane = createPane(800, 600, imageGroup.getChildren().toArray(new Node[0]));
+                borderPane.setRight(imageGroupPane);
+                break;
+            }
+//            else {
+//                imageGroup = generator.GetImageAsGroup("ImageNotFound");
+//                imageGroupPane = draggable.createPane(800, 600, imageGroup.getChildren().toArray(new Node[0]));
+//                draggable.borderPane.setRight(imageGroupPane);
+//            }
+        }
+        return imageGroupPane;
+    }
+
+//    public void initBtnsArray() {
+////        DraggableNodePaneMaker draggable = new DraggableNodePaneMaker()
+//        InteractiveFeatures features = new InteractiveFeatures();
+//
+//        int i = 0;
+//        for(int j = 0; j < features.buttons.length; j++) {
+//            Button button = new Button(features.dormNames[j]);
+//            button.setOnAction(new EventHandler<ActionEvent>() {
+//                @Override public void handle(ActionEvent e) {
+//                    try {
+//                        System.out.println(e.toString());
+//                        Pane image = features.getDormImage(button.getText());
+//                        borderPane.setRight(image); // doesn't work b/c borderpane is empty and not in start
+//
+////                        Button o = (Button) e.getTarget();
+////                        String name = o.getName();
+////                        getDormImage(String.valueOf(o));
+////                        draggable.borderPane.setCenter(draggable.createDraggableApp(nodeArray));
+////                        draggable.stage.setScene(new Scene(draggable.borderPane));
+////                        draggable.stage.show();
+//
+//                    } catch (FileNotFoundException ex) {
+//                        throw new RuntimeException(ex);
+//                    }
+//                }
+//            });
+//            features.buttons[i] = button;
+//            i++;
+//        }
+//    }
 
     public Parent createDraggableApp(Node[] nodeArray) {
 
