@@ -21,7 +21,6 @@ import java.io.FileNotFoundException;
 
 public class DraggableNodePaneMaker extends Application {
     public BorderPane borderPane = new BorderPane();
-//    public Stage stage = new Stage();
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -263,9 +262,23 @@ public class DraggableNodePaneMaker extends Application {
 
         HBox hbox2 = addHBox2(buttonName);
         HBox hbox3 = addHBox3(buttonName);
+        HBox hbox4 = addHBox4(buttonName);
 
-        tile.getChildren().addAll(hbox2, hbox3);
+        tile.getChildren().addAll(hbox2, hbox3, hbox4);
         return tile;
+    }
+
+    public HBox addHBox4(String buttonName) {
+        HBox hbox = new HBox();
+        hbox.setPadding(new Insets(10));
+        hbox.setSpacing(8);
+
+        Text title = new Text("Pet Friendly: ");
+        title.setFont(Font.font("Arial", FontWeight.BOLD, 20));
+        Label label = new Label("Yes");
+        hbox.getChildren().addAll(title, label);
+
+        return hbox;
     }
 
     public HBox addHBox3(String buttonName) {
