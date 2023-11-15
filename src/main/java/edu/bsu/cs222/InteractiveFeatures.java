@@ -19,7 +19,7 @@ import java.io.IOException;
 public class InteractiveFeatures extends DraggableNodePaneMaker {
     public Button[] buttons = new Button[11];
     public String[] dormNames = {"Dehority",
-    "Park", "North", "Botsford/Swinford", "Kinghorn",
+    "Park", "Beyerl", "Botsford/Swinford", "Kinghorn",
     "North West", "Noyer", "Schmidt/Wilson", "Studebaker East",
     "Studebaker West", "Woodworth"};
 
