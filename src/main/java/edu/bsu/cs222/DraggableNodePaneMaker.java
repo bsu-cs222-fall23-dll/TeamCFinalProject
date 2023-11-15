@@ -53,18 +53,11 @@ public class DraggableNodePaneMaker extends Application {
         return hbox;
     }
 
-    public Node[] getFurnitureNodes() {
+    public Node[] getFurnitureNodes() throws FileNotFoundException {
+        NodeMaker nodeMaker = new NodeMaker();
 
-        Node chair = new Circle(30, 30, 30, Color.BLUE);
-        Node bed = new Rectangle(135, 215, Color.RED);
-        Node desk = new Rectangle(100, 95, Color.GREEN);
-        Node drawers = new Rectangle(100, 95, Color.YELLOW);
-        Node fridge = new Rectangle(65, 65, Color.DARKCYAN);
-        Node trashcan = new Rectangle(55,30, Color.SANDYBROWN);
-        Label control = new Label("Fishtank");
-        control.setFont(Font.font(34));
-
-        return new Node[]{chair, desk, drawers, fridge, bed, trashcan};
+        return new Node[]{nodeMaker.makeImageNode("Bed.jpg"), nodeMaker.makeImageNode("Chair.png"),
+                nodeMaker.makeImageNode("Desk.png"), nodeMaker.makeImageNode("Drawers.png"), nodeMaker.makeImageNode("TrashCan.png")};
     }
 
     public VBox addVBox() {
