@@ -21,7 +21,7 @@ import java.io.FileNotFoundException;
 
 public class DraggableNodePaneMaker extends Application {
     public BorderPane borderPane = new BorderPane();
-    public Stage stage = new Stage();
+//    public Stage stage = new Stage();
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -31,8 +31,8 @@ public class DraggableNodePaneMaker extends Application {
         borderPane.setTop(hBox);
         borderPane.setLeft(vBox);
 
-        stage.setScene(new Scene(borderPane));
-        stage.show();
+        primaryStage.setScene(new Scene(borderPane));
+        primaryStage.show();
 
     }
 
