@@ -1,22 +1,15 @@
 package edu.bsu.cs222;
 
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.*;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-
-import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 
 
@@ -25,28 +18,12 @@ public class DraggableNodePaneMaker extends Application {
     public Stage stage = new Stage();
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
-
-        Node chair = new Circle(30, 30, 30, Color.BLUE);
-        Node bed = new Rectangle(135, 215, Color.RED);
-        Node desk = new Rectangle(100, 95, Color.GREEN);
-        Node drawers = new Rectangle(100, 95, Color.YELLOW);
-        Node fridge = new Rectangle(65, 65, Color.DARKCYAN);
-        Node trashcan = new Rectangle(55,30, Color.SANDYBROWN);
-        Label control = new Label("Fishtank");
-        control.setFont(Font.font(34));
-
+    public void start(Stage primaryStage) {
 
         HBox hBox = addHBox();
         VBox vBox = addVBox();
         borderPane.setTop(hBox);
         borderPane.setLeft(vBox);
-
-//        Pane imageGroup = features.getDormImage("Dehority");
-//        var root = createPane(800, 600, imageGroup.getChildren().toArray(new Node[0]));//
-//        borderPane.setRight(imageGroup);
-
-//        borderPane.setCenter(createDraggableApp(nodeArray));
 
         stage.setScene(new Scene(borderPane));
         stage.show();
@@ -77,47 +54,16 @@ public class DraggableNodePaneMaker extends Application {
 
         NodeMaker nodeMaker = new NodeMaker();
 
-        Node[] nodeArray = new Node[]{nodeMaker.makeImageNode("Chair.png"), nodeMaker.makeImageNode("TrashCan.png"), nodeMaker.makeImageNode("Desk.png"), nodeMaker.makeImageNode("Drawers.png"), nodeMaker.makeImageNode("Bed.jpg"), nodeMaker.makeImageNode("TrashCan.png")};
-        return nodeArray;
+        return new Node[]{nodeMaker.makeImageNode("Chair.png"), nodeMaker.makeImageNode("TrashCan.png"), nodeMaker.makeImageNode("Desk.png"), nodeMaker.makeImageNode("Drawers.png"), nodeMaker.makeImageNode("Bed.jpg"), nodeMaker.makeImageNode("TrashCan.png")};
     }
 
-    public VBox addVBox() throws FileNotFoundException {
+    public VBox addVBox() {
         InteractiveFeatures features = new InteractiveFeatures();
         features.initBtnsArray();
 
         VBox vbox = new VBox();
         vbox.setPadding(new Insets(10));
         vbox.setSpacing(8);
-
-        Button[] buttons = new Button[11];
-        String[] dormNames = {"Dehority",
-                "Park", "North", "Botsford/Swinford", "Kinghorn",
-                "North West", "Noyer", "Schmidt/Wilson", "Studebaker East",
-                "Studebaker West", "Woodworth"};
-
-
-
-
-
-        //add into vbox .getChildren borderPane
-//        int i = 0;
-//        Button btns = null;
-
-//            int finalJ = j;
-//            btns = buttons[i];
-//            btns.setOnAction(new EventHandler<ActionEvent>() {
-//                @Override
-//                public void handle(ActionEvent e) {
-//                    try {
-//                        Pane image = features.getDormImage(dormNames[finalJ]);
-//                        borderPane.setRight(image);
-//                    } catch (FileNotFoundException ex) {
-//                        throw new RuntimeException(ex);
-//                    }
-//                }
-//            });
-//            i++;
-//        }
 
         Button button1 = new Button("Dehority");
         Button button2 = new Button("Park");
@@ -130,22 +76,18 @@ public class DraggableNodePaneMaker extends Application {
         Button button9 = new Button("Studebaker East");
         Button button10 = new Button("Studebaker West");
         Button button11 = new Button("Woodworth");
-        button1.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent e) {
-                    try {
-                        Pane image = features.getDormImage(button1.getText());
-                        borderPane.setRight(image);
-                        borderPane.setCenter(createDraggableApp(getFurnitureNodes()));
-                    } catch (FileNotFoundException ex) {
-                        throw new RuntimeException(ex);
-                    }
-                }
-            });
 
-        button2.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent e) {
+        button1.setOnAction(e -> {
+            try {
+                Pane image = features.getDormImage(button1.getText());
+                borderPane.setRight(image);
+                borderPane.setCenter(createDraggableApp(getFurnitureNodes()));
+            } catch (FileNotFoundException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
+
+        button2.setOnAction(e -> {
                 try {
                     Pane image = features.getDormImage(button2.getText());
                     borderPane.setRight(image);
@@ -154,11 +96,9 @@ public class DraggableNodePaneMaker extends Application {
                     throw new RuntimeException(ex);
                 }
             }
-        });
+        );
 
-        button3.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent e) {
+        button3.setOnAction(e -> {
                 try {
                     Pane image = features.getDormImage(button3.getText());
                     borderPane.setRight(image);
@@ -167,11 +107,9 @@ public class DraggableNodePaneMaker extends Application {
                     throw new RuntimeException(ex);
                 }
             }
-        });
+        );
 
-        button4.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent e) {
+        button4.setOnAction(e -> {
                 try {
                     Pane image = features.getDormImage(button4.getText());
                     borderPane.setRight(image);
@@ -180,11 +118,9 @@ public class DraggableNodePaneMaker extends Application {
                     throw new RuntimeException(ex);
                 }
             }
-        });
+        );
 
-        button5.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent e) {
+        button5.setOnAction(e -> {
                 try {
                     Pane image = features.getDormImage(button5.getText());
                     borderPane.setRight(image);
@@ -193,11 +129,9 @@ public class DraggableNodePaneMaker extends Application {
                     throw new RuntimeException(ex);
                 }
             }
-        });
+        );
 
-        button6.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent e) {
+        button6.setOnAction(e -> {
                 try {
                     Pane image = features.getDormImage(button6.getText());
                     borderPane.setRight(image);
@@ -206,11 +140,9 @@ public class DraggableNodePaneMaker extends Application {
                     throw new RuntimeException(ex);
                 }
             }
-        });
+        );
 
-        button7.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent e) {
+        button7.setOnAction(e -> {
                 try {
                     Pane image = features.getDormImage(button7.getText());
                     borderPane.setRight(image);
@@ -219,11 +151,9 @@ public class DraggableNodePaneMaker extends Application {
                     throw new RuntimeException(ex);
                 }
             }
-        });
+        );
 
-        button8.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent e) {
+        button8.setOnAction(e -> {
                 try {
                     Pane image = features.getDormImage(button8.getText());
                     borderPane.setRight(image);
@@ -232,11 +162,9 @@ public class DraggableNodePaneMaker extends Application {
                     throw new RuntimeException(ex);
                 }
             }
-        });
+        );
 
-        button9.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent e) {
+        button9.setOnAction(e -> {
                 try {
                     Pane image = features.getDormImage(button9.getText());
                     borderPane.setRight(image);
@@ -245,11 +173,9 @@ public class DraggableNodePaneMaker extends Application {
                     throw new RuntimeException(ex);
                 }
             }
-        });
+        );
 
-        button10.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent e) {
+        button10.setOnAction(e -> {
                 try {
                     Pane image = features.getDormImage(button10.getText());
                     borderPane.setRight(image);
@@ -258,11 +184,9 @@ public class DraggableNodePaneMaker extends Application {
                     throw new RuntimeException(ex);
                 }
             }
-        });
+        );
 
-        button11.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent e) {
+        button11.setOnAction(e -> {
                 try {
                     Pane image = features.getDormImage(button11.getText());
                     borderPane.setRight(image);
@@ -271,10 +195,7 @@ public class DraggableNodePaneMaker extends Application {
                     throw new RuntimeException(ex);
                 }
             }
-        });
-//            buttons[i] = button1;
-//            i++;
-//        }
+        );
 
         Text title = new Text("Dorm Selection");
         title.setFont(Font.font("Arial", FontWeight.BOLD, 20));
@@ -286,57 +207,21 @@ public class DraggableNodePaneMaker extends Application {
 
     public Pane getDormImage(String dormName) throws FileNotFoundException {
         ImageGenerator generator = new ImageGenerator();
-//        DraggableNodePaneMaker draggable = new DraggableNodePaneMaker();
         InteractiveFeatures features = new InteractiveFeatures();
 
         Group imageGroup;
         Pane imageGroupPane = null;
         for(Button b : features.buttons) {
-            if(b.getText() == dormName) {
+            if(b.getText().equals(dormName)) {
                 imageGroup = generator.GetRoomImageAsGroup(dormName);
                 imageGroupPane = createPane(800, 600, imageGroup.getChildren().toArray(new Node[0]));
                 borderPane.setRight(imageGroupPane);
                 break;
             }
-//            else {
-//                imageGroup = generator.GetImageAsGroup("ImageNotFound");
-//                imageGroupPane = draggable.createPane(800, 600, imageGroup.getChildren().toArray(new Node[0]));
-//                draggable.borderPane.setRight(imageGroupPane);
-//            }
         }
         return imageGroupPane;
     }
 
-//    public void initBtnsArray() {
-////        DraggableNodePaneMaker draggable = new DraggableNodePaneMaker()
-//        InteractiveFeatures features = new InteractiveFeatures();
-//
-//        int i = 0;
-//        for(int j = 0; j < features.buttons.length; j++) {
-//            Button button = new Button(features.dormNames[j]);
-//            button.setOnAction(new EventHandler<ActionEvent>() {
-//                @Override public void handle(ActionEvent e) {
-//                    try {
-//                        System.out.println(e.toString());
-//                        Pane image = features.getDormImage(button.getText());
-//                        borderPane.setRight(image); // doesn't work b/c borderpane is empty and not in start
-//
-////                        Button o = (Button) e.getTarget();
-////                        String name = o.getName();
-////                        getDormImage(String.valueOf(o));
-////                        draggable.borderPane.setCenter(draggable.createDraggableApp(nodeArray));
-////                        draggable.stage.setScene(new Scene(draggable.borderPane));
-////                        draggable.stage.show();
-//
-//                    } catch (FileNotFoundException ex) {
-//                        throw new RuntimeException(ex);
-//                    }
-//                }
-//            });
-//            features.buttons[i] = button;
-//            i++;
-//        }
-//    }
 
     public Parent createDraggableApp(Node[] nodeArray) {
 
