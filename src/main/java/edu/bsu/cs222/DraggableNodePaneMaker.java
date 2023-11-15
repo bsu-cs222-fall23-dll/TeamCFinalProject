@@ -74,7 +74,9 @@ public class DraggableNodePaneMaker extends Application {
         return hbox;
     }
 
-    public Node[] getFurnitureNodes() {
+    public Node[] getFurnitureNodes() throws FileNotFoundException {
+
+        NodeMaker nodeMaker = new NodeMaker();
 
         Node chair = new Circle(30, 30, 30, Color.BLUE);
         Node bed = new Rectangle(135, 215, Color.RED);
@@ -85,7 +87,7 @@ public class DraggableNodePaneMaker extends Application {
         Label control = new Label("Fishtank");
         control.setFont(Font.font(34));
 
-        Node[] nodeArray = new Node[]{chair, desk, drawers, fridge, bed, trashcan};
+        Node[] nodeArray = new Node[]{chair, desk, drawers, fridge, nodeMaker.makeBed(), trashcan};
         return nodeArray;
     }
 

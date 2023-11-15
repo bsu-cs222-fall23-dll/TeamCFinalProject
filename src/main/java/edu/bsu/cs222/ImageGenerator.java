@@ -32,6 +32,23 @@ public class ImageGenerator extends Application {
 
     }
 
+    public Group GetFurnitureImageAsGroup(String furnitureName) throws FileNotFoundException {
+
+        InputStream fileLocationStream = new FileInputStream("src/main/Images/Furniture/" + furnitureName );
+
+        Image furnitureImage = new Image(fileLocationStream);
+
+        ImageView viewableFurnitureImage = new ImageView();
+
+        viewableFurnitureImage.setImage(furnitureImage);
+
+
+        viewableFurnitureImage.setPreserveRatio(true);
+
+        return new Group(viewableFurnitureImage);
+
+    }
+
 
     public void start(Stage stage) throws IOException {
         InputStream fileLocationStream = new FileInputStream("src/main/Images/TestDehorityRoom.png");
