@@ -13,9 +13,9 @@ import javafx.stage.Stage;
 
 public class ImageGenerator extends Application {
 
-    public Group GetRoomImageAsGroup(String buttonName) throws FileNotFoundException {
+    public Group GetImageAsGroup(String buttonName) throws FileNotFoundException {
 
-        InputStream fileLocationStream = new FileInputStream("src/main/Images/Rooms/Test" + buttonName + "Room.png");
+        InputStream fileLocationStream = new FileInputStream("src/main/Images/Test" + buttonName + "Room.png");
 
         Image roomImage = new Image(fileLocationStream);
 
@@ -29,23 +29,6 @@ public class ImageGenerator extends Application {
         viewableRoomImage.setPreserveRatio(true);
 
         return new Group(viewableRoomImage);
-
-    }
-
-    public Group GetFurnitureImageAsGroup(String furnitureName) throws FileNotFoundException {
-
-        InputStream fileLocationStream = new FileInputStream("src/main/Images/Furniture/" + furnitureName );
-
-        Image furnitureImage = new Image(fileLocationStream);
-
-        ImageView viewableFurnitureImage = new ImageView();
-
-        viewableFurnitureImage.setImage(furnitureImage);
-
-
-        viewableFurnitureImage.setPreserveRatio(true);
-
-        return new Group(viewableFurnitureImage);
 
     }
 
