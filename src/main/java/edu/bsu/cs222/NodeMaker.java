@@ -7,18 +7,11 @@ import java.io.FileNotFoundException;
 
 public class NodeMaker {
 
-    Group makeChair() throws FileNotFoundException {
+    Group makeImageNode(String nodeName) throws FileNotFoundException {
         ImageGenerator generator = new ImageGenerator();
 
-        Group chair = generator.GetFurnitureImageAsGroup("Chair.png");
+        Group imageNode = generator.GetFurnitureImageAsGroup(nodeName);
 
-        return chair;
-    }
-    Group makeBed() throws FileNotFoundException {
-        ImageGenerator generator = new ImageGenerator();
-
-        Group bed = generator.GetFurnitureImageAsGroup("Bed.jpg");
-
-        return bed;
+        return imageNode;
     }
 }

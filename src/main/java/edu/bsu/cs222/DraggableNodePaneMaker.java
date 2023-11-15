@@ -86,7 +86,7 @@ public class DraggableNodePaneMaker extends Application {
         Label control = new Label("Fishtank");
         control.setFont(Font.font(34));
 
-        Node[] nodeArray = new Node[]{nodeMaker.makeChair(), desk, drawers, fridge, nodeMaker.makeBed(), trashcan};
+        Node[] nodeArray = new Node[]{nodeMaker.makeImageNode("Chair.png"), desk, drawers, fridge, nodeMaker.makeImageNode("Bed.jpg"), nodeMaker.makeImageNode("TrashCan.png")};
         return nodeArray;
     }
 
