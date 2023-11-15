@@ -58,6 +58,7 @@ public class DraggableNodePaneMaker extends Application {
 
         return new Node[]{nodeMaker.makeImageNode("Bed.jpg"), nodeMaker.makeImageNode("Chair.png"),
                 nodeMaker.makeImageNode("Desk.png"), nodeMaker.makeImageNode("Drawers.png"), nodeMaker.makeImageNode("TrashCan.png")};
+
     }
 
     public VBox addVBox() {
