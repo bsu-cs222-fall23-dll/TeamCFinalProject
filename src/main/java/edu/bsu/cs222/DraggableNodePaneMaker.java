@@ -77,16 +77,7 @@ public class DraggableNodePaneMaker extends Application {
 
         NodeMaker nodeMaker = new NodeMaker();
 
-        Node chair = new Circle(30, 30, 30, Color.BLUE);
-        Node bed = new Rectangle(135, 215, Color.RED);
-        Node desk = new Rectangle(100, 95, Color.GREEN);
-        Node drawers = new Rectangle(100, 95, Color.YELLOW);
-        Node fridge = new Rectangle(65, 65, Color.DARKCYAN);
-        Node trashcan = new Rectangle(55,30, Color.SANDYBROWN);
-        Label control = new Label("Fishtank");
-        control.setFont(Font.font(34));
-
-        Node[] nodeArray = new Node[]{nodeMaker.makeImageNode("Chair.png"), desk, drawers, fridge, nodeMaker.makeImageNode("Bed.jpg"), nodeMaker.makeImageNode("TrashCan.png")};
+        Node[] nodeArray = new Node[]{nodeMaker.makeImageNode("Chair.png"), nodeMaker.makeImageNode("TrashCan.png"), nodeMaker.makeImageNode("Desk.png"), nodeMaker.makeImageNode("Drawers.png"), nodeMaker.makeImageNode("Bed.jpg"), nodeMaker.makeImageNode("TrashCan.png")};
         return nodeArray;
     }
 
