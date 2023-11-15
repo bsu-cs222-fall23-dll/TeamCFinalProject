@@ -301,7 +301,7 @@ public class DraggableNodePaneMaker extends Application {
         Pane imageGroupPane = null;
         for(Button b : features.buttons) {
             if(b.getText() == dormName) {
-                imageGroup = generator.GetImageAsGroup(dormName);
+                imageGroup = generator.GetRoomImageAsGroup(dormName);
                 imageGroupPane = createPane(800, 600, imageGroup.getChildren().toArray(new Node[0]));
                 borderPane.setRight(imageGroupPane);
                 break;
