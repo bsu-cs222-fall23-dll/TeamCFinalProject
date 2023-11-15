@@ -222,7 +222,6 @@ public class DraggableNodePaneMaker extends Application {
         return imageGroupPane;
     }
 
-
     public Parent createDraggableApp(Node[] nodeArray) {
 
         for(int i = 0; i<nodeArray.length; i++){
