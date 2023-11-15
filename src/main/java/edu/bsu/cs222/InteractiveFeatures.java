@@ -19,7 +19,7 @@ import java.io.IOException;
 public class InteractiveFeatures extends DraggableNodePaneMaker {
     public Button[] buttons = new Button[11];
     public String[] dormNames = {"Dehority",
-    "Park", "North", "Botsford/Swinford", "Kinghorn",
+    "Park", "Beyerl", "Botsford/Swinford", "Kinghorn",
     "North West", "Noyer", "Schmidt/Wilson", "Studebaker East",
     "Studebaker West", "Woodworth"};
 
@@ -118,7 +118,7 @@ public class InteractiveFeatures extends DraggableNodePaneMaker {
         Pane imageGroupPane = null;
         for(Button b : buttons) {
             if(b.getText() == dormName) {
-                imageGroup = generator.GetRoomImageAsGroup(dormName);
+                imageGroup = generator.GetImageAsGroup(dormName);
                 imageGroupPane = draggable.createPane(800, 600, imageGroup.getChildren().toArray(new Node[0]));
 //                draggable.borderPane.setRight(imageGroupPane);
                 break;
@@ -172,4 +172,5 @@ public class InteractiveFeatures extends DraggableNodePaneMaker {
 //    }
 //
 }
+
 
