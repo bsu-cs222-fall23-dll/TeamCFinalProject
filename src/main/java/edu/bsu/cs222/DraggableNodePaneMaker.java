@@ -36,7 +36,6 @@ public class DraggableNodePaneMaker extends Application {
         Label control = new Label("Fishtank");
         control.setFont(Font.font(34));
 
-        Node[] nodeArray = new Node[]{chair, desk, drawers, fridge, bed, trashcan};
 
         HBox hBox = addHBox();
         VBox vBox = addVBox();
@@ -87,7 +86,7 @@ public class DraggableNodePaneMaker extends Application {
         Label control = new Label("Fishtank");
         control.setFont(Font.font(34));
 
-        Node[] nodeArray = new Node[]{chair, desk, drawers, fridge, nodeMaker.makeBed(), trashcan};
+        Node[] nodeArray = new Node[]{nodeMaker.makeChair(), desk, drawers, fridge, nodeMaker.makeBed(), trashcan};
         return nodeArray;
     }
 
