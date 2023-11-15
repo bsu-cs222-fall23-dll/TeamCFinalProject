@@ -1,8 +1,6 @@
 package edu.bsu.cs222;
 
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.*;
 import javafx.scene.control.Button;
@@ -21,10 +19,9 @@ import java.io.FileNotFoundException;
 
 public class DraggableNodePaneMaker extends Application {
     public BorderPane borderPane = new BorderPane();
-//    public Stage stage = new Stage();
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage) {
 
         HBox hBox = addHBox();
         VBox vBox = addVBox();
@@ -67,11 +64,10 @@ public class DraggableNodePaneMaker extends Application {
         Label control = new Label("Fishtank");
         control.setFont(Font.font(34));
 
-        Node[] nodeArray = new Node[]{chair, desk, drawers, fridge, bed, trashcan};
-        return nodeArray;
+        return new Node[]{chair, desk, drawers, fridge, bed, trashcan};
     }
 
-    public VBox addVBox() throws FileNotFoundException {
+    public VBox addVBox() {
         InteractiveFeatures features = new InteractiveFeatures();
         features.initBtnsArray();
 
@@ -92,157 +88,124 @@ public class DraggableNodePaneMaker extends Application {
         Button button9 = new Button("Studebaker East");
         Button button10 = new Button("Studebaker West");
         Button button11 = new Button("Woodworth");
-        button1.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent e) {
-                    try {
-                        Pane image = features.getDormImage(button1.getText());
-                        borderPane.setRight(image);
-                        borderPane.setCenter(createDraggableApp(getFurnitureNodes()));
-                        borderPane.setBottom(dormDataTilePane(button1.getText()));
-                    } catch (FileNotFoundException ex) {
-                        throw new RuntimeException(ex);
-                    }
-                }
-            });
-
-        button2.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent e) {
-                try {
-                    Pane image = features.getDormImage(button2.getText());
-                    borderPane.setRight(image);
-                    borderPane.setCenter(createDraggableApp(getFurnitureNodes()));
-                    borderPane.setBottom(dormDataTilePane(button2.getText()));
-                } catch (FileNotFoundException ex) {
-                    throw new RuntimeException(ex);
-                }
+        button1.setOnAction(e -> {
+            try {
+                Pane image = features.getDormImage(button1.getText());
+                borderPane.setRight(image);
+                borderPane.setCenter(createDraggableApp(getFurnitureNodes()));
+                borderPane.setBottom(dormDataTilePane(button1.getText()));
+            } catch (FileNotFoundException ex) {
+                throw new RuntimeException(ex);
             }
         });
 
-        button3.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent e) {
-                try {
-                    Pane image = features.getDormImage(button3.getText());
-                    borderPane.setRight(image);
-                    borderPane.setCenter(createDraggableApp(getFurnitureNodes()));
-                    borderPane.setBottom(dormDataTilePane(button3.getText()));
-                } catch (FileNotFoundException ex) {
-                    throw new RuntimeException(ex);
-                }
+        button2.setOnAction(e -> {
+            try {
+                Pane image = features.getDormImage(button2.getText());
+                borderPane.setRight(image);
+                borderPane.setCenter(createDraggableApp(getFurnitureNodes()));
+                borderPane.setBottom(dormDataTilePane(button2.getText()));
+            } catch (FileNotFoundException ex) {
+                throw new RuntimeException(ex);
             }
         });
 
-        button4.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent e) {
-                try {
-                    Pane image = features.getDormImage(button4.getText());
-                    borderPane.setRight(image);
-                    borderPane.setCenter(createDraggableApp(getFurnitureNodes()));
-                    borderPane.setBottom(dormDataTilePane(button4.getText()));
-                } catch (FileNotFoundException ex) {
-                    throw new RuntimeException(ex);
-                }
+        button3.setOnAction(e -> {
+            try {
+                Pane image = features.getDormImage(button3.getText());
+                borderPane.setRight(image);
+                borderPane.setCenter(createDraggableApp(getFurnitureNodes()));
+                borderPane.setBottom(dormDataTilePane(button3.getText()));
+            } catch (FileNotFoundException ex) {
+                throw new RuntimeException(ex);
             }
         });
 
-        button5.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent e) {
-                try {
-                    Pane image = features.getDormImage(button5.getText());
-                    borderPane.setRight(image);
-                    borderPane.setCenter(createDraggableApp(getFurnitureNodes()));
-                    borderPane.setBottom(dormDataTilePane(button5.getText()));
-                } catch (FileNotFoundException ex) {
-                    throw new RuntimeException(ex);
-                }
+        button4.setOnAction(e -> {
+            try {
+                Pane image = features.getDormImage(button4.getText());
+                borderPane.setRight(image);
+                borderPane.setCenter(createDraggableApp(getFurnitureNodes()));
+                borderPane.setBottom(dormDataTilePane(button4.getText()));
+            } catch (FileNotFoundException ex) {
+                throw new RuntimeException(ex);
             }
         });
 
-        button6.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent e) {
-                try {
-                    Pane image = features.getDormImage(button6.getText());
-                    borderPane.setRight(image);
-                    borderPane.setCenter(createDraggableApp(getFurnitureNodes()));
-                    borderPane.setBottom(dormDataTilePane(button6.getText()));
-                } catch (FileNotFoundException ex) {
-                    throw new RuntimeException(ex);
-                }
+        button5.setOnAction(e -> {
+            try {
+                Pane image = features.getDormImage(button5.getText());
+                borderPane.setRight(image);
+                borderPane.setCenter(createDraggableApp(getFurnitureNodes()));
+                borderPane.setBottom(dormDataTilePane(button5.getText()));
+            } catch (FileNotFoundException ex) {
+                throw new RuntimeException(ex);
             }
         });
 
-        button7.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent e) {
-                try {
-                    Pane image = features.getDormImage(button7.getText());
-                    borderPane.setRight(image);
-                    borderPane.setCenter(createDraggableApp(getFurnitureNodes()));
-                    borderPane.setBottom(dormDataTilePane(button7.getText()));
-                } catch (FileNotFoundException ex) {
-                    throw new RuntimeException(ex);
-                }
+        button6.setOnAction(e -> {
+            try {
+                Pane image = features.getDormImage(button6.getText());
+                borderPane.setRight(image);
+                borderPane.setCenter(createDraggableApp(getFurnitureNodes()));
+                borderPane.setBottom(dormDataTilePane(button6.getText()));
+            } catch (FileNotFoundException ex) {
+                throw new RuntimeException(ex);
             }
         });
 
-        button8.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent e) {
-                try {
-                    Pane image = features.getDormImage(button8.getText());
-                    borderPane.setRight(image);
-                    borderPane.setCenter(createDraggableApp(getFurnitureNodes()));
-                    borderPane.setBottom(dormDataTilePane(button8.getText()));
-                } catch (FileNotFoundException ex) {
-                    throw new RuntimeException(ex);
-                }
+        button7.setOnAction(e -> {
+            try {
+                Pane image = features.getDormImage(button7.getText());
+                borderPane.setRight(image);
+                borderPane.setCenter(createDraggableApp(getFurnitureNodes()));
+                borderPane.setBottom(dormDataTilePane(button7.getText()));
+            } catch (FileNotFoundException ex) {
+                throw new RuntimeException(ex);
             }
         });
 
-        button9.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent e) {
-                try {
-                    Pane image = features.getDormImage(button9.getText());
-                    borderPane.setRight(image);
-                    borderPane.setCenter(createDraggableApp(getFurnitureNodes()));
-                    borderPane.setBottom(dormDataTilePane(button9.getText()));
-                } catch (FileNotFoundException ex) {
-                    throw new RuntimeException(ex);
-                }
+        button8.setOnAction(e -> {
+            try {
+                Pane image = features.getDormImage(button8.getText());
+                borderPane.setRight(image);
+                borderPane.setCenter(createDraggableApp(getFurnitureNodes()));
+                borderPane.setBottom(dormDataTilePane(button8.getText()));
+            } catch (FileNotFoundException ex) {
+                throw new RuntimeException(ex);
             }
         });
 
-        button10.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent e) {
-                try {
-                    Pane image = features.getDormImage(button10.getText());
-                    borderPane.setRight(image);
-                    borderPane.setCenter(createDraggableApp(getFurnitureNodes()));
-                    borderPane.setBottom(dormDataTilePane(button10.getText()));
-                } catch (FileNotFoundException ex) {
-                    throw new RuntimeException(ex);
-                }
+        button9.setOnAction(e -> {
+            try {
+                Pane image = features.getDormImage(button9.getText());
+                borderPane.setRight(image);
+                borderPane.setCenter(createDraggableApp(getFurnitureNodes()));
+                borderPane.setBottom(dormDataTilePane(button9.getText()));
+            } catch (FileNotFoundException ex) {
+                throw new RuntimeException(ex);
             }
         });
 
-        button11.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent e) {
-                try {
-                    Pane image = features.getDormImage(button11.getText());
-                    borderPane.setRight(image);
-                    borderPane.setCenter(createDraggableApp(getFurnitureNodes()));
-                    borderPane.setBottom(dormDataTilePane(button11.getText()));
-                } catch (FileNotFoundException ex) {
-                    throw new RuntimeException(ex);
-                }
+        button10.setOnAction(e -> {
+            try {
+                Pane image = features.getDormImage(button10.getText());
+                borderPane.setRight(image);
+                borderPane.setCenter(createDraggableApp(getFurnitureNodes()));
+                borderPane.setBottom(dormDataTilePane(button10.getText()));
+            } catch (FileNotFoundException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
+
+        button11.setOnAction(e -> {
+            try {
+                Pane image = features.getDormImage(button11.getText());
+                borderPane.setRight(image);
+                borderPane.setCenter(createDraggableApp(getFurnitureNodes()));
+                borderPane.setBottom(dormDataTilePane(button11.getText()));
+            } catch (FileNotFoundException ex) {
+                throw new RuntimeException(ex);
             }
         });
 
@@ -263,9 +226,23 @@ public class DraggableNodePaneMaker extends Application {
 
         HBox hbox2 = addHBox2(buttonName);
         HBox hbox3 = addHBox3(buttonName);
+        HBox hbox4 = addHBox4();
 
-        tile.getChildren().addAll(hbox2, hbox3);
+        tile.getChildren().addAll(hbox2, hbox3, hbox4);
         return tile;
+    }
+
+    public HBox addHBox4() {
+        HBox hbox = new HBox();
+        hbox.setPadding(new Insets(10));
+        hbox.setSpacing(8);
+
+        Text title = new Text("Pet Friendly: ");
+        title.setFont(Font.font("Arial", FontWeight.BOLD, 20));
+        Label label = new Label("Yes");
+        hbox.getChildren().addAll(title, label);
+
+        return hbox;
     }
 
     public HBox addHBox3(String buttonName) {
@@ -291,21 +268,34 @@ public class DraggableNodePaneMaker extends Application {
         Label label;
         String key = null;
         title.setFont(Font.font("Arial", FontWeight.BOLD, 20));
-        if(dormName.equals("Dehority") || dormName.equals("Noyer")
-                || dormName.equals("Studebaker West") || dormName.equals("Woodworth")) {
-            key = "Chair(s): 2\nBed(s): 2" +
-                    "\nTrashcan(s): 2\nDesk(s): 2\nDresser(s): 2" +
-                    "\nWardrobe(s): 2\nCloset(s): 0\n";
-        } else if(dormName.equals("Beyerl") || dormName.equals("Schmidt-Wilson")
-                || dormName.equals("North West") || dormName.equals("Botsford-Swinford")) {
-            key = "Chair(s): 2\nBed(s): 2" +
-                    "\nTrashcan(s): 2\nDesk(s): 2\nDresser(s): 2" +
-                    "\nWardrobe(s): 0\nCloset(s): 2\n";
-        } else if(dormName.equals("Park") || dormName.equals("Studebaker East")
-                || dormName.equals("Kinghorn") ) {
-            key = "Chair(s): 2\nBed(s): 2" +
-                    "\nTrashcan(s): 2\nDesk(s): 2\nDresser(s): 2" +
-                    "\nWardrobe(s): 0\nCloset(s): 1\n";
+        switch (dormName) {
+            case "Dehority", "Noyer", "Studebaker West", "Woodworth" -> key = """
+                    Chair(s): 2
+                    Bed(s): 2
+                    Trashcan(s): 2
+                    Desk(s): 2
+                    Dresser(s): 2
+                    Wardrobe(s): 2
+                    Closet(s): 0
+                    """;
+            case "Beyerl", "Schmidt-Wilson", "North West", "Botsford-Swinford" -> key = """
+                    Chair(s): 2
+                    Bed(s): 2
+                    Trashcan(s): 2
+                    Desk(s): 2
+                    Dresser(s): 2
+                    Wardrobe(s): 0
+                    Closet(s): 2
+                    """;
+            case "Park", "Studebaker East", "Kinghorn" -> key = """
+                    Chair(s): 2
+                    Bed(s): 2
+                    Trashcan(s): 2
+                    Desk(s): 2
+                    Dresser(s): 2
+                    Wardrobe(s): 0
+                    Closet(s): 1
+                    """;
         }
 
         label = new Label(key);
@@ -314,15 +304,12 @@ public class DraggableNodePaneMaker extends Application {
     }
 
     public String dormRoomInfo(String buttonName) {
-        String foodCourt = "";
-        if(buttonName.equals("Dehority") || buttonName.equals("Woodworth") || buttonName.equals("Noyer") || buttonName.equals("Park") || buttonName.equals("Kinghorn")) {
-            foodCourt = "- Woodworth Commons\n- Noyer Market";
-        } else if(buttonName.equals("Beyerl") || buttonName.equals("Schmidt-Wilson") || buttonName.equals("North West") || buttonName.equals("Botsford-Swinford")){
-            foodCourt = "- North Dining Hall\n";
-        } else if(buttonName.equals("Studebaker East") || buttonName.equals("Studebaker West") ) {
-            foodCourt = "- Woodworth Commons\n- Tom John Food Shop\n- Micro Cafe";
-        }
-        return foodCourt;
+        return switch (buttonName) {
+            case "Dehority", "Woodworth", "Noyer", "Park", "Kinghorn" -> "- Woodworth Commons\n- Noyer Market";
+            case "Beyerl", "Schmidt-Wilson", "North West", "Botsford-Swinford" -> "- North Dining Hall\n";
+            case "Studebaker East", "Studebaker West" -> "- Woodworth Commons\n- Tom John Food Shop\n- Micro Cafe";
+            default -> "";
+        };
     }
 
     public Parent createDraggableApp(Node[] nodeArray) {

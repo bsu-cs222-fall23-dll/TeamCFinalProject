@@ -31,7 +31,7 @@ public class InteractiveFeatures extends DraggableNodePaneMaker {
         Group imageGroup;
         Pane imageGroupPane = null;
         for(Button b : buttons) {
-            if(b.getText() == dormName) {
+            if(b.getText().equals(dormName)) {
                 imageGroup = generator.GetImageAsGroup(dormName);
                 imageGroupPane = createPane(800, 600, imageGroup.getChildren().toArray(new Node[0]));
                 borderPane.setRight(imageGroupPane);
