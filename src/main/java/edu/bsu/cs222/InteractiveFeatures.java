@@ -51,46 +51,6 @@ public class InteractiveFeatures extends DraggableNodePaneMaker {
         return gridPane;
     }
 
-    public Pane createCustomFurniture() {
-        GridPane gridPane = new GridPane();
-        Button button = new Button("Create Furniture");
-        ArrayList<ChoiceBox> choiceBoxes = new ArrayList<ChoiceBox>();
-        button.setOnAction(e -> {
-            System.out.println("Width: " + getChoice(choiceBoxes.get(0)));
-            System.out.println("Height: " + getChoice(choiceBoxes.get(1)));
-        });
-        Text widthText = new Text("Width in feet");
-        Text heightTest = new Text("Height in feet");
-
-        ChoiceBox choice;
-        choice = getFurnitureSizeBox();
-        choice.getSelectionModel().select(0);
-
-        ChoiceBox choice2;
-        choice2 = getFurnitureSizeBox();
-        choice2.getSelectionModel().select(0);
-
-        choiceBoxes.add(choice);
-        choiceBoxes.add(choice2);
-
-        gridPane.add(button,0,1);
-        gridPane.add(widthText,0,2);
-        gridPane.add(choiceBoxes.get(0),1,2);
-        gridPane.add(heightTest,0,3);
-        gridPane.add(choiceBoxes.get(1),1,3);
-        return gridPane;
-    }
-
-    private static ChoiceBox getFurnitureSizeBox() {
-        ChoiceBox newBox = new ChoiceBox();
-        newBox.getItems().addAll(1, 2, 3, 4, 5, 6, 7, 8);
-        return newBox;
-    }
-
-    public String getChoice(ChoiceBox choice) {
-        return choice.getValue().toString();
-    }
-
     public Pane getDormImage(String dormName) throws FileNotFoundException {
         ImageGenerator generator = new ImageGenerator();
 

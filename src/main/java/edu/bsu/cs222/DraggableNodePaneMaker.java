@@ -31,6 +31,8 @@ public class DraggableNodePaneMaker extends Application {
         borderPane.setRight(vBoxCustomFurniture);
 
         primaryStage.setScene(new Scene(borderPane));
+        primaryStage.setWidth(1000);
+        primaryStage.setHeight(750);
         primaryStage.show();
 
     }
@@ -86,6 +88,7 @@ public class DraggableNodePaneMaker extends Application {
 
     public VBox addVBoxCustomFurniture() {
         InteractiveFeatures features = new InteractiveFeatures();
+        UserCreatingFurniture creatingFurniture = new UserCreatingFurniture();
         features.initBtnsArray();
 
         VBox vbox = new VBox();
@@ -96,8 +99,7 @@ public class DraggableNodePaneMaker extends Application {
         features.initBtnsArray();
         Group root = new Group();
 
-        root.getChildren().add(features.createCustomFurniture());
-
+        root.getChildren().add(creatingFurniture.createCustomFurniture());
 
         Text title = new Text("Add Custom\nFurniture");
         title.setFont(Font.font("Arial", FontWeight.BOLD, 20));
