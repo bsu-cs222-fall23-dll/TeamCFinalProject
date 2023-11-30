@@ -15,7 +15,7 @@ public class ImageGenerator extends Application {
 
     public Group GetImageAsGroup(String buttonName) throws FileNotFoundException {
 
-        InputStream fileLocationStream = new FileInputStream("src/main/Images/Test" + buttonName + "Room.png");
+        InputStream fileLocationStream = new FileInputStream("src/main/Images/Rooms/Test" + buttonName + "Room.png");
 
         Image roomImage = new Image(fileLocationStream);
 
