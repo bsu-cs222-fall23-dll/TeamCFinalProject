@@ -4,10 +4,8 @@ import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
-import javafx.scene.text.Text;
 
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
 
 
 public class InteractiveFeatures extends DraggableNodePaneMaker {
@@ -16,9 +14,6 @@ public class InteractiveFeatures extends DraggableNodePaneMaker {
     "Park", "Beyerl", "Botsford-Swinford", "Kinghorn",
     "North West", "Noyer", "Schmidt-Wilson", "Studebaker East",
     "Studebaker West", "Woodworth"};
-
-    public Button[] buttonCustomFurniture = new Button[11];
-    public String[] customFurnitureNames = {"Height, Width, Create"};
 
     public void initBtnsArray() {
         int i = 0;
@@ -37,10 +32,7 @@ public class InteractiveFeatures extends DraggableNodePaneMaker {
 // maybe add an EventListener or something
             b.setOnAction(e -> {
                 try {
-                    Pane image = getDormImage(b.getText());
-                    borderPane.setRight(image);
-                    borderPane.setCenter(createDraggableApp(getFurnitureNodes()));
-                    borderPane.setBottom(dormDataTilePane(b.getText()));
+                    gridPane.add(roomButtonClicked(b), 0, 1);
                 } catch (FileNotFoundException ex) {
                     throw new RuntimeException(ex);
                 }
@@ -48,6 +40,17 @@ public class InteractiveFeatures extends DraggableNodePaneMaker {
             gridPane.add(b, 0, i*(i+(int)b.getWidth()));
             i++;
         }
+        return gridPane;
+    }
+
+    public Pane roomButtonClicked(Button b) throws FileNotFoundException {
+        GridPane gridPane = new GridPane();
+        Pane image = getDormImage(b.getText());
+        System.out.println(image);
+        borderPane.setRight(image);
+        borderPane.setCenter(createDraggableApp(getFurnitureNodes()));
+        borderPane.setBottom(dormDataTilePane(b.getText()));
+        gridPane.add(image,1,10);
         return gridPane;
     }
 
