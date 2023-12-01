@@ -31,8 +31,8 @@ public class DraggableNodePaneMaker extends Application {
         borderPane.setRight(vBoxCustomFurniture);
 
         primaryStage.setScene(new Scene(borderPane));
-        primaryStage.setWidth(1000);
-        primaryStage.setHeight(750);
+        primaryStage.setWidth(1200);
+        primaryStage.setHeight(850);
         primaryStage.show();
 
     }
@@ -67,17 +67,15 @@ public class DraggableNodePaneMaker extends Application {
 
     public VBox addVBox() {
         InteractiveFeatures features = new InteractiveFeatures();
-        features.initBtnsArray();
 
         VBox vbox = new VBox();
         vbox.setPadding(new Insets(10));
         vbox.setSpacing(8);
         vbox.setStyle("-fx-background-color: DAE6F3;");
 
-        features.initBtnsArray();
         Group root = new Group();
 
-        root.getChildren().add(features.getButtonGrid());
+        root.getChildren().add(features.getDormRoom());
 
         Text title = new Text("Dorm Selection");
         title.setFont(Font.font("Arial", FontWeight.BOLD, 20));
@@ -89,14 +87,12 @@ public class DraggableNodePaneMaker extends Application {
     public VBox addVBoxCustomFurniture() {
         InteractiveFeatures features = new InteractiveFeatures();
         UserCreatingFurniture creatingFurniture = new UserCreatingFurniture();
-        features.initBtnsArray();
 
         VBox vbox = new VBox();
         vbox.setPadding(new Insets(10));
         vbox.setSpacing(8);
         vbox.setStyle("-fx-background-color: DAE6F3;");
 
-        features.initBtnsArray();
         Group root = new Group();
 
         root.getChildren().add(creatingFurniture.createCustomFurniture());

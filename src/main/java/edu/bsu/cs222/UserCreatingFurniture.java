@@ -20,16 +20,18 @@ public class UserCreatingFurniture {
         Text heightTest = new Text("Height in feet");
 
         gridPane.add(widthText,0,1);
-        gridPane.add(getFurnitureSizeBox(choiceBoxes),1,1);
+        gridPane.add(getFurnitureSizeBox(choiceBoxes,0),1,1);
         gridPane.add(heightTest,0,2);
-        gridPane.add(getFurnitureSizeBox(choiceBoxes),1,2);
+        gridPane.add(getFurnitureSizeBox(choiceBoxes,0),1,2);
         gridPane.add(furnitureButton,0,3);
         return gridPane;
     }
 
-    private static ChoiceBox getFurnitureSizeBox(ArrayList<ChoiceBox> choiceBoxes) {
+    public ChoiceBox getFurnitureSizeBox(ArrayList<ChoiceBox> choiceBoxes, int type) {
+        InteractiveFeatures features = new InteractiveFeatures();
         ChoiceBox newBox = new ChoiceBox();
-        newBox.getItems().addAll(1, 2, 3, 4, 5, 6, 7, 8);
+        if (type == 0) newBox.getItems().addAll(1, 2, 3, 4, 5, 6, 7, 8);
+        if (type == 1) newBox.getItems().addAll(features.dormNames);
         newBox.getSelectionModel().select(0);
         choiceBoxes.add(newBox);
         return newBox;
