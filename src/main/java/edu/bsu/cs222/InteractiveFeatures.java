@@ -61,7 +61,7 @@ public class InteractiveFeatures extends DraggableNodePaneMaker {
         BorderPane rootPane = new BorderPane();
         DraggableNodePaneMaker paneMaker = new DraggableNodePaneMaker();
 
-        Pane image = getDormImage(b.getText());git
+        Pane image = getDormImage(b.getText());
         System.out.println(b.getText());
         rootPane.setRight(image);
         rootPane.setCenter(paneMaker.createDraggableApp(paneMaker.getFurnitureNodes()));
