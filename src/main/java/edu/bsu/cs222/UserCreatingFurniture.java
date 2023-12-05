@@ -2,12 +2,15 @@ package edu.bsu.cs222;
 
 import javafx.scene.Group;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.*;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
+import java.awt.*;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
@@ -109,8 +112,8 @@ public class UserCreatingFurniture {
 
     public Pane clickedFurnitureButton(ArrayList<ChoiceBox> choices) throws FileNotFoundException {
         DraggableNodePaneMaker paneMaker = new DraggableNodePaneMaker();
-//        int furnitureWidth = Integer.parseInt(getChoice(choices.get(0)));
-//        int furnitureHeight = Integer.parseInt(getChoice(choices.get(1)));
+        int furnitureWidth = Integer.parseInt(getChoice(choices.get(0)));
+        int furnitureHeight = Integer.parseInt(getChoice(choices.get(1)));
 //        int bed = Integer.parseInt(getChoice(choices.get(2)));
 
         String chosenFurniture = "Bed.jpg";
@@ -123,6 +126,43 @@ public class UserCreatingFurniture {
 
 
         gridPane.add(image, 0, 0);
+
+        InteractiveFeatures features = new InteractiveFeatures();
+        DraggableNodePaneMaker DNPM = new DraggableNodePaneMaker();
+
+        BorderPane borderPane = new BorderPane();
+
+        try {
+            System.out.println("Spawning furniture...");
+            Pane newImage = features.getDormImage("Dehority");
+            borderPane.setRight(newImage);
+
+            //displays ALL furniture nodes
+
+            Node[] furniture = DNPM.getFurnitureNodes();
+
+            Node element = new Rectangle(furnitureWidth * 10.0, furnitureHeight * 10);
+            Node[] newFurniture = new Node[furniture.length + 1];
+            int i;
+            for(i = 0; i < furniture.length; i++) {
+                newFurniture[i] = furniture[i];
+            }
+            newFurniture[i] = element;
+            borderPane.setCenter(DNPM.createDraggableApp(newFurniture));
+
+            borderPane.setBottom(DNPM.dormDataTilePane("Dehority"));
+
+            Stage primaryStage = new Stage();
+
+            primaryStage.setScene(new Scene(borderPane));
+            primaryStage.setWidth(1200);
+            primaryStage.setHeight(850);
+            primaryStage.show();
+
+        } catch (FileNotFoundException ex) {
+            throw new RuntimeException(ex);
+        }
+
         return gridPane;
 
 
@@ -145,6 +185,7 @@ public class UserCreatingFurniture {
 //        System.out.println("Width: " + furnitureWidth);
 //        System.out.println("Height: " + furnitureHeight);
 //        System.out.println("Bed: " + bed);
+
 
 
 //    public Pane getFurnitureImage(String furnitureName) throws FileNotFoundException {
