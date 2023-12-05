@@ -1,13 +1,9 @@
 package edu.bsu.cs222;
 
-import javafx.event.EventHandler;
-import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
-import javafx.event.ActionEvent;
 
 
 import java.io.FileNotFoundException;
@@ -24,9 +20,9 @@ public class InteractiveFeatures extends DraggableNodePaneMaker {
     public Pane getDormRoom() {
         GridPane gridPane = new GridPane();
         UserCreatingFurniture furnitureFunction = new UserCreatingFurniture();
-        Button furnitureButton = new Button("See Dorm Room");
-        ArrayList<ChoiceBox> choiceBoxes = new ArrayList<ChoiceBox>();
-        furnitureButton.setOnAction(e -> {
+        Button dormRoomButton = new Button("See Dorm Room");
+        ArrayList<ChoiceBox> choiceBoxes = new ArrayList<ChoiceBox>(); // choiceBoxes is empty
+        dormRoomButton.setOnAction(e -> {
             try {
                 gridPane.add(clickedDormRoomButton(choiceBoxes),2,3);
             } catch (FileNotFoundException ex) {
@@ -34,17 +30,21 @@ public class InteractiveFeatures extends DraggableNodePaneMaker {
             }
         });
 
-        gridPane.add(furnitureFunction.getFurnitureSizeBox(choiceBoxes,1),0,1);
-        gridPane.add(furnitureButton,0,2);
+        //add dorm names b/c choiceBoxes(1) {getSizeBox()}
+        gridPane.add(furnitureFunction.getSizeBox(choiceBoxes,1),0,1);
+
+        //add created dorm image in gridPane
+        gridPane.add(dormRoomButton,0,2);
         return gridPane;
     }
 
     public Pane clickedDormRoomButton(ArrayList<ChoiceBox> choices) throws FileNotFoundException {
         UserCreatingFurniture furnitureFunction = new UserCreatingFurniture();
-        String chosenDorm = furnitureFunction.getChoice(choices.get(0));
+        String chosenDorm = furnitureFunction.getChoice(choices.get(0)); //gets the chosen value(dorm) by user
         GridPane gridPane = new GridPane();
         Pane image = getDormImage(chosenDorm);
-        gridPane.add(image,1,10);
+
+        gridPane.add(image, 0, 0);
         return gridPane;
     }
 
@@ -74,22 +74,22 @@ public class InteractiveFeatures extends DraggableNodePaneMaker {
 //        return gridPane;
 //    }
 
-    public BorderPane buttonActionsPane(Button b) throws FileNotFoundException {
-        System.out.println("bye");
-        BorderPane rootPane = new BorderPane();
-        DraggableNodePaneMaker paneMaker = new DraggableNodePaneMaker();
-
-        Pane image = getDormImage(b.getText());
-        System.out.println(b.getText());
-        rootPane.setRight(image);
-        rootPane.setCenter(paneMaker.createDraggableApp(paneMaker.getFurnitureNodes()));
-        rootPane.setBottom(paneMaker.dormDataTilePane(b.getText()));
-
-//        HBox hBox = new HBox();
-//        hBox.getChildren().addAll(rootPane);
-
-        return rootPane;
-    }
+//    public BorderPane buttonActionsPane(Button b) throws FileNotFoundException {
+//        System.out.println("bye");
+//        BorderPane rootPane = new BorderPane();
+//        DraggableNodePaneMaker paneMaker = new DraggableNodePaneMaker();
+//
+//        Pane image = getDormImage(b.getText());
+//        System.out.println(b.getText());
+//        rootPane.setRight(image);
+//        rootPane.setCenter(paneMaker.createDraggableApp(paneMaker.getFurnitureNodes()));
+//        rootPane.setBottom(paneMaker.dormDataTilePane(b.getText()));
+//
+////        HBox hBox = new HBox();
+////        hBox.getChildren().addAll(rootPane);
+//
+//        return rootPane;
+//    }
 
 //    public AnchorPane displayButtonData(buttonData) {
 //        AnchorPane anchorpane = new AnchorPane();
