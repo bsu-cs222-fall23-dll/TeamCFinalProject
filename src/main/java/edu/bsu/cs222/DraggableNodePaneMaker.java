@@ -26,10 +26,14 @@ public class DraggableNodePaneMaker extends Application {
 
         HBox hBox = addHBox();
         VBox vBox = addVBox();
+        VBox vBoxCustomFurniture = addVBoxCustomFurniture();
         borderPane.setTop(hBox);
         borderPane.setLeft(vBox);
+        borderPane.setRight(vBoxCustomFurniture);
 
         primaryStage.setScene(new Scene(borderPane));
+        primaryStage.setWidth(1200);
+        primaryStage.setHeight(850);
         primaryStage.show();
 
     }
@@ -70,10 +74,15 @@ public class DraggableNodePaneMaker extends Application {
         vbox.setSpacing(8);
         vbox.setStyle("-fx-background-color: #DAE6F3;");
 
-        features.initBtnsArray();
         Group root = new Group();
 
-        root.getChildren().add(features.displayButtonGrid());
+//        features.initBtnsArray();
+//        Group root = new Group();
+
+//        root.getChildren().add(features.displayButtonGrid());
+
+
+
 
 
 
@@ -92,7 +101,7 @@ public class DraggableNodePaneMaker extends Application {
 //        }
 
 
-        Button button1 = new Button("Dehority");
+          Button button1 = new Button("Dehority");
 //        Button button2 = new Button("Park");
 //        Button button3 = new Button("Beyerl");
 //        Button button4 = new Button("Botsford-Swinford");
@@ -227,7 +236,32 @@ public class DraggableNodePaneMaker extends Application {
 
         Text title = new Text("Dorm Selection");
         title.setFont(Font.font("Arial", FontWeight.BOLD, 20));
-        vbox.getChildren().addAll(title, root, button1); //button1, button2, button3, button4, button5, button6, button7, button8, button9, button10, button11
+        vbox.getChildren().addAll(title, root, button1); //root, button1, button2, button3, button4, button5, button6, button7, button8, button9, button10, button11
+        root.getChildren().add(features.getDormRoom());
+//
+//        Text title = new Text("Dorm Selection");
+//        title.setFont(Font.font("Arial", FontWeight.BOLD, 20));
+//        vbox.getChildren().addAll(title, root);
+
+        return vbox;
+    }
+
+    public VBox addVBoxCustomFurniture() {
+        InteractiveFeatures features = new InteractiveFeatures();
+        UserCreatingFurniture creatingFurniture = new UserCreatingFurniture();
+
+        VBox vbox = new VBox();
+        vbox.setPadding(new Insets(10));
+        vbox.setSpacing(8);
+        vbox.setStyle("-fx-background-color: DAE6F3;");
+
+        Group root = new Group();
+
+        root.getChildren().add(creatingFurniture.createCustomFurniture());
+
+        Text title = new Text("Add Custom\nFurniture");
+        title.setFont(Font.font("Arial", FontWeight.BOLD, 20));
+        vbox.getChildren().addAll(title, root);
 
         return vbox;
     }
@@ -271,7 +305,6 @@ public class DraggableNodePaneMaker extends Application {
         String dormData = dormRoomInfo(buttonName);
         Label label = new Label(dormData);
         hbox.getChildren().addAll(title, label);
-
         return hbox;
     }
 
