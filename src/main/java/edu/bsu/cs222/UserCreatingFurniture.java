@@ -6,15 +6,17 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import java.awt.*;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public class UserCreatingFurniture {
+
+    private Node[] furniture = new Node[]{};
 
     public Pane getCustomFurniture() {
         GridPane gridPane = new GridPane();
@@ -54,38 +56,7 @@ public class UserCreatingFurniture {
             }
         });
 
-//        String[] furnitureArray = {"Bed(s)", "Chair(s)", "Wardrobe(s)",
-//                "Trashcan(s)", "Drawer(s)", "Desk(s)"};
 
-//        int j = 0;
-//        for(int i = 1; i <= 7; i++) {
-//            gridPane.add(furnitureArray[i], 0, i);
-//            gridPane.add(getFurnitureSizeBox(choiceBoxes,2),1, i);
-//            j++;
-//        }
-
-//        Text bedText = new Text("Bed(s)");
-//        Text chairText = new Text("Chair(s)");
-//        Text wardrobeText = new Text("Wardrobe(s)");
-//        Text trashcanText = new Text("Trashcan(s)");
-//        Text drawerText = new Text("Drawer(s)");
-//        Text deskText = new Text("Desk(s)");
-//
-//        gridPane.add(bedText, 0, 1);
-//        gridPane.add(getSizeBox(choiceBoxes2,2),1,1);
-//        gridPane.add(chairText, 0, 2);
-//        gridPane.add(getSizeBox(choiceBoxes2,2),1,2);
-//        gridPane.add(wardrobeText, 0, 3);
-//        gridPane.add(getSizeBox(choiceBoxes2,2),1,3);
-//        gridPane.add(trashcanText, 0, 4);
-//        gridPane.add(getSizeBox(choiceBoxes2,2),1,4);
-//        gridPane.add(drawerText, 0, 5);
-//        gridPane.add(getSizeBox(choiceBoxes2,2),1,5);
-//        gridPane.add(deskText, 0, 6);
-//        gridPane.add(getSizeBox(choiceBoxes2,2),1,6);
-//        gridPane.add(furnitureButton,0,7);
-
-        //add furniture amount b/c choiceBoxes(2) {getSizeBox()}
         gridPane.add(getSizeBox(choiceBoxes2, 2), 0, 1);
 
         //add created furniture images in gridPane
@@ -127,41 +98,9 @@ public class UserCreatingFurniture {
 
         gridPane.add(image, 0, 0);
 
-        InteractiveFeatures features = new InteractiveFeatures();
-        DraggableNodePaneMaker DNPM = new DraggableNodePaneMaker();
+        addNewFurniture(furnitureHeight, furnitureWidth);
 
-        BorderPane borderPane = new BorderPane();
-
-        try {
-            System.out.println("Spawning furniture...");
-            Pane newImage = features.getDormImage("Dehority");
-            borderPane.setRight(newImage);
-
-            //displays ALL furniture nodes
-
-            Node[] furniture = DNPM.getFurnitureNodes();
-
-            Node element = new Rectangle(furnitureWidth * 10.0, furnitureHeight * 10);
-            Node[] newFurniture = new Node[furniture.length + 1];
-            int i;
-            for(i = 0; i < furniture.length; i++) {
-                newFurniture[i] = furniture[i];
-            }
-            newFurniture[i] = element;
-            borderPane.setCenter(DNPM.createDraggableApp(newFurniture));
-
-            borderPane.setBottom(DNPM.dormDataTilePane("Dehority"));
-
-            Stage primaryStage = new Stage();
-
-            primaryStage.setScene(new Scene(borderPane));
-            primaryStage.setWidth(1200);
-            primaryStage.setHeight(850);
-            primaryStage.show();
-
-        } catch (FileNotFoundException ex) {
-            throw new RuntimeException(ex);
-        }
+        spawnFurniture();
 
         return gridPane;
 
@@ -218,6 +157,60 @@ public class UserCreatingFurniture {
 //        paneMaker.borderPane.setCenter(gridPane);  //paneMaker.createDraggableApp(paneMaker.getFurnitureNodes())
 //
 //        return gridPane;
+    }
+
+    private void addNewFurniture(int furnitureHeight, int furnitureWidth) {
+            Node element = new Rectangle(furnitureWidth * 40, furnitureHeight * 40, Color.RED);
+
+            Node[] newFurniture = new Node[furniture.length + 1];
+
+            int i;
+
+            for(i = 0; i < furniture.length; i++) {
+                newFurniture[i] = furniture[i];
+            }
+
+            newFurniture[i] = element;
+            furniture = newFurniture;
+    }
+    void spawnFurniture(){
+        InteractiveFeatures features = new InteractiveFeatures();
+        DraggableNodePaneMaker DNPM = new DraggableNodePaneMaker();
+
+        BorderPane borderPane = new BorderPane();
+
+        try {
+            Pane newImage = features.getDormImage(features.currentDorm);
+            borderPane.setRight(newImage);
+
+            Node[] getFurniture = DNPM.getFurnitureNodes();
+
+            Node[] newFurniture = new Node[getFurniture.length + furniture.length];
+
+            for(int i = 0; i < newFurniture.length; i++){
+                if(i < getFurniture.length){
+                    newFurniture[i] = getFurniture[i];
+                }
+                else{
+                    newFurniture[i] = furniture[i - getFurniture.length];
+                }
+            }
+
+
+            borderPane.setCenter(DNPM.createDraggableApp(newFurniture));
+
+            borderPane.setBottom(DNPM.dormDataTilePane(features.currentDorm));
+
+            Stage primaryStage = new Stage();
+
+            primaryStage.setScene(new Scene(borderPane));
+            primaryStage.setWidth(1200);
+            primaryStage.setHeight(850);
+            primaryStage.show();
+
+        } catch (FileNotFoundException ex) {
+            throw new RuntimeException(ex);
+        }
     }
 
     public Pane getFurnitureImage(String furnitureName) throws FileNotFoundException {
