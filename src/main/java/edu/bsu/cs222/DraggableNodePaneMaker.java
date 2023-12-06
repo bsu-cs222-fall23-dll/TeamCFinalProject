@@ -59,9 +59,22 @@ public class DraggableNodePaneMaker extends Application {
 
     public Node[] getFurnitureNodes() throws FileNotFoundException {
         NodeMaker nodeMaker = new NodeMaker();
+        InteractiveFeatures features = new InteractiveFeatures();
 
-        return new Node[]{nodeMaker.makeImageNode("Bed.jpg"), nodeMaker.makeImageNode("Chair.png"),
-                nodeMaker.makeImageNode("Desk.png"), nodeMaker.makeImageNode("Drawers.png"), nodeMaker.makeImageNode("TrashCan.png")};
+        if(features.currentDorm.equals("Dehority")|| features.currentDorm.equals("Woodworth")){
+            return new Node[]{nodeMaker.makeImageNode("Bed.jpg"), nodeMaker.makeImageNode("Chair.png"),
+                    nodeMaker.makeImageNode("Desk.png"), nodeMaker.makeImageNode("Drawers.png"), nodeMaker.makeImageNode("TrashCan.png")};
+        }
+        else{
+            return new Node[]{nodeMaker.makeImageNode("Bed.jpg"), nodeMaker.makeImageNode("Chair.png"),
+                    nodeMaker.makeImageNode("Desk.png"), nodeMaker.makeImageNode("Drawers.png"), nodeMaker.makeImageNode("TrashCan.png"),
+                    nodeMaker.makeImageNode("Bed.jpg"), nodeMaker.makeImageNode("Chair.png"),
+                    nodeMaker.makeImageNode("Desk.png"), nodeMaker.makeImageNode("Drawers.png"), nodeMaker.makeImageNode("TrashCan.png")
+
+            };
+        }
+
+
 
     }
 
