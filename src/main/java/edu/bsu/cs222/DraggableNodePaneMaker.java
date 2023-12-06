@@ -88,27 +88,14 @@ public class DraggableNodePaneMaker extends Application {
         vbox.setStyle("-fx-background-color: #DAE6F3;");
 
         Group root = new Group();
-//        Group root2 = new Group();
 
-//        features.initBtnsArray();
-//        Group root = new Group();
-
-//        root.getChildren().add(features.displayButtonGrid());
-
-        Button button1 = new Button("Dehority");
+        Button button1 = new Button("Show me my room!");
 
         button1.setOnAction(e -> {
-            try {
-                Pane image = features.getDormImage(button1.getText());
-                borderPane.setRight(image);
+            UserCreatingFurniture creatingFurniture = new UserCreatingFurniture();
 
-                //displays ALL furniture nodes
-                borderPane.setCenter(createDraggableApp(getFurnitureNodes()));
+            creatingFurniture.spawnFurniture();
 
-                borderPane.setBottom(dormDataTilePane(button1.getText()));
-            } catch (FileNotFoundException ex) {
-                throw new RuntimeException(ex);
-            }
         });
 
         Text title = new Text("Dorm Selection");
@@ -117,19 +104,9 @@ public class DraggableNodePaneMaker extends Application {
         vbox.getChildren().addAll(title, button1); //root, button1, button2, button3, button4, button5, button6, button7, button8, button9, button10, button11
         root.getChildren().add(features.getDormRoom());
 
-        //may be the wrong place to call this, check UserCreatingFurniture()
-//      ***************  borderPane.setCenter(createDraggableApp(getFurnitureNodes()));
-
-
-//        root2.getChildren().add(furnitureNodes.getFurnitureImage());
-
         BorderPane.setAlignment(root, Pos.TOP_LEFT);
         BorderPane.setMargin(root, new Insets(12,12,12,12));
         borderPane.setCenter(root);
-
-//        BorderPane.setAlignment(root2, Pos.BOTTOM_CENTER);
-//        BorderPane.setMargin(root2, new Insets(12,12,12,12));
-//        borderPane.setCenter(root2);
 
         return vbox;
     }
