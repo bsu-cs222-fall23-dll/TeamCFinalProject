@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class InteractiveFeatures extends DraggableNodePaneMaker {
 
-    public String currentDorm = "Woodworth";
+    public static String currentDorm = "Woodworth";
     public String[] dormNames = {"Dehority",
     "Park", "Beyerl", "Botsford-Swinford", "Kinghorn",
     "North West", "Noyer", "Schmidt-Wilson", "Studebaker East",
