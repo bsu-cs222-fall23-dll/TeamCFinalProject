@@ -22,7 +22,7 @@ public class InteractiveFeatures extends DraggableNodePaneMaker {
     public Pane getDormRoom() {
         GridPane gridPane = new GridPane();
         UserCreatingFurniture furnitureFunction = new UserCreatingFurniture();
-        Button dormRoomButton = new Button("See Dorm Room");
+        Button dormRoomButton = new Button("Select Dorm");
         ArrayList<ChoiceBox> choiceBoxes = new ArrayList<ChoiceBox>(); // choiceBoxes is empty
         dormRoomButton.setOnAction(e -> {
             try {
