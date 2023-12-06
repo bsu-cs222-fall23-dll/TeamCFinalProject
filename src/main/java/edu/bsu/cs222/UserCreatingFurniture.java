@@ -100,8 +100,6 @@ public class UserCreatingFurniture {
 
         addNewFurniture(furnitureHeight, furnitureWidth);
 
-        spawnFurniture();
-
         return gridPane;
     }
 
