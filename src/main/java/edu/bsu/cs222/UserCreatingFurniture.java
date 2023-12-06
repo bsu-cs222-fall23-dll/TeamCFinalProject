@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 public class UserCreatingFurniture {
 
-    private Node[] furniture = new Node[]{};
+    private static Node[] furniture = new Node[]{};
 
     public Pane getCustomFurniture() {
         GridPane gridPane = new GridPane();
