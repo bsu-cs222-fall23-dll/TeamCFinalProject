@@ -34,7 +34,7 @@ public class ImageGenerator extends Application {
 
     public Group GetFurnitureImageAsGroup(String buttonName) throws FileNotFoundException {
 
-        InputStream fileLocationStream = new FileInputStream("src/main/Images/Furniture/" + buttonName);
+        InputStream fileLocationStream = new FileInputStream("src/main/Images/Furniture/" + buttonName + ".png");
 
         Image roomImage = new Image(fileLocationStream);
 

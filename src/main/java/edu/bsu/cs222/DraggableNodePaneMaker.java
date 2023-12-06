@@ -21,7 +21,6 @@ public class DraggableNodePaneMaker extends Application {
 
     @Override
     public void start(Stage primaryStage) throws FileNotFoundException {
-        InteractiveFeatures features = new InteractiveFeatures();
 
         HBox hBox = addHBox();
         VBox vBox = addVBox();
@@ -60,14 +59,13 @@ public class DraggableNodePaneMaker extends Application {
     public Node[] getFurnitureNodes() throws FileNotFoundException {
         NodeMaker nodeMaker = new NodeMaker();
 
-        return new Node[]{nodeMaker.makeImageNode("Bed.jpg"), nodeMaker.makeImageNode("Chair.png"),
-                nodeMaker.makeImageNode("Desk.png"), nodeMaker.makeImageNode("Drawers.png"), nodeMaker.makeImageNode("TrashCan.png")};
+        return new Node[]{nodeMaker.makeImageNode("Bed.png"), nodeMaker.makeImageNode("Chair.png"),
+                nodeMaker.makeImageNode("Desk.png"), nodeMaker.makeImageNode("Drawer.png"), nodeMaker.makeImageNode("TrashCan.png")};
 
     }
 
     public VBox addVBox() throws FileNotFoundException {
         InteractiveFeatures features = new InteractiveFeatures();
-        UserCreatingFurniture furnitureNodes = new UserCreatingFurniture();
 
         VBox vbox = new VBox();
         vbox.setPadding(new Insets(10));
@@ -75,12 +73,6 @@ public class DraggableNodePaneMaker extends Application {
         vbox.setStyle("-fx-background-color: #DAE6F3;");
 
         Group root = new Group();
-//        Group root2 = new Group();
-
-//        features.initBtnsArray();
-//        Group root = new Group();
-
-//        root.getChildren().add(features.displayButtonGrid());
 
         Button button1 = new Button("Dehority");
 
@@ -101,22 +93,12 @@ public class DraggableNodePaneMaker extends Application {
         Text title = new Text("Dorm Selection");
         title.setFont(Font.font("Arial", FontWeight.BOLD, 20));
 
-        vbox.getChildren().addAll(title, button1); //root, button1, button2, button3, button4, button5, button6, button7, button8, button9, button10, button11
         root.getChildren().add(features.getDormRoom());
-
-        //may be the wrong place to call this, check UserCreatingFurniture()
-//      ***************  borderPane.setCenter(createDraggableApp(getFurnitureNodes()));
-
-
-//        root2.getChildren().add(furnitureNodes.getFurnitureImage());
+        vbox.getChildren().addAll(title, root); //button1
 
         BorderPane.setAlignment(root, Pos.TOP_LEFT);
         BorderPane.setMargin(root, new Insets(12,12,12,12));
         borderPane.setCenter(root);
-
-//        BorderPane.setAlignment(root2, Pos.BOTTOM_CENTER);
-//        BorderPane.setMargin(root2, new Insets(12,12,12,12));
-//        borderPane.setCenter(root2);
 
         return vbox;
     }
