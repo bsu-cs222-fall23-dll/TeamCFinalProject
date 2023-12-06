@@ -103,60 +103,6 @@ public class UserCreatingFurniture {
         spawnFurniture();
 
         return gridPane;
-
-
-        // This is where you can program the "spawning in custom furniture" and use the int variables there for width and height
-
-
-        // This is where you can spawn in all furniture images
-
-        /*
-        - add to StackPane or AnchorPane??
-        - add that Pane to borderPane center??
-         */
-
-//     *******   paneMaker.borderPane.setCenter(paneMaker.createDraggableApp(paneMaker.getFurnitureNodes()));
-
-
-
-
-
-//        System.out.println("Width: " + furnitureWidth);
-//        System.out.println("Height: " + furnitureHeight);
-//        System.out.println("Bed: " + bed);
-
-
-
-//    public Pane getFurnitureImage(String furnitureName) throws FileNotFoundException {
-//        ImageGenerator generator = new ImageGenerator();
-//        DraggableNodePaneMaker paneMaker = new DraggableNodePaneMaker();
-//
-//        Group imageGroup;
-//        Pane imageGroupPane = null;
-//
-//        imageGroup = generator.GetFurnitureImageAsGroup(furnitureName);
-//        imageGroupPane = paneMaker.createPane(800, 600, imageGroup.getChildren().toArray(new Node[0]));
-//        paneMaker.borderPane.setRight(imageGroupPane);
-//
-//        return imageGroupPane;
-
-
-//        DraggableNodePaneMaker paneMaker = new DraggableNodePaneMaker();
-//        GridPane gridPane = new GridPane();
-//
-//        Circle circle = new Circle();
-//        circle.setCenterX(100);
-//        circle.setCenterY(100);
-//        circle.setRadius(50);
-//        circle.setFill(Color.RED);
-//
-//        gridPane.add(circle, 0, 0);
-//
-////        paneMaker.borderPane.setAlignment(gridPane, Pos.BOTTOM_CENTER);
-////        paneMaker.borderPane.setMargin(gridPane, new Insets(12,12,12,12));
-//        paneMaker.borderPane.setCenter(gridPane);  //paneMaker.createDraggableApp(paneMaker.getFurnitureNodes())
-//
-//        return gridPane;
     }
 
     private void addNewFurniture(int furnitureHeight, int furnitureWidth) {
