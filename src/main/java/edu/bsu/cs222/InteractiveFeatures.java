@@ -11,6 +11,8 @@ import java.util.ArrayList;
 
 
 public class InteractiveFeatures extends DraggableNodePaneMaker {
+
+    public static String currentDorm = "Dehority";
     public String[] dormNames = {"Dehority",
     "Park", "Beyerl", "Botsford-Swinford", "Kinghorn",
     "North West", "Noyer", "Schmidt-Wilson", "Studebaker East",
@@ -20,7 +22,7 @@ public class InteractiveFeatures extends DraggableNodePaneMaker {
     public Pane getDormRoom() {
         GridPane gridPane = new GridPane();
         UserCreatingFurniture furnitureFunction = new UserCreatingFurniture();
-        Button dormRoomButton = new Button("See Dorm Room");
+        Button dormRoomButton = new Button("Select Dorm");
         ArrayList<ChoiceBox> choiceBoxes = new ArrayList<ChoiceBox>(); // choiceBoxes is empty
         dormRoomButton.setOnAction(e -> {
             try {
@@ -30,10 +32,8 @@ public class InteractiveFeatures extends DraggableNodePaneMaker {
             }
         });
 
-        //add dorm names b/c choiceBoxes(1) {getSizeBox()}
         gridPane.add(furnitureFunction.getSizeBox(choiceBoxes,1),0,1);
 
-        //add created dorm image in gridPane
         gridPane.add(dormRoomButton,0,2);
         return gridPane;
     }
@@ -48,75 +48,12 @@ public class InteractiveFeatures extends DraggableNodePaneMaker {
         return gridPane;
     }
 
-//    public Pane displayButtonGrid() {
-//        int i = 0;
-//        GridPane gridPane = new GridPane();
-//        DraggableNodePaneMaker paneMaker = new DraggableNodePaneMaker();
-//
-//        System.out.println("hi");
-//        for(Button b : buttons) {
-//            // do something with your button
-//            // maybe add an EventListener or something
-//            b.setOnAction(new EventHandler<ActionEvent>() {
-//              @Override
-//              public void handle(ActionEvent event) {
-//                  try {
-//                      BorderPane pane = buttonActionsPane(b);
-//                      paneMaker.borderPane.setCenter(pane);
-//                  } catch (FileNotFoundException e) {
-//                      throw new RuntimeException(e);
-//                  }
-//              }
-//            });
-//            gridPane.add(b, 0, i*(i+(int)b.getWidth()));
-//            i++;
-//        }
-//        return gridPane;
-//    }
-
-//    public BorderPane buttonActionsPane(Button b) throws FileNotFoundException {
-//        System.out.println("bye");
-//        BorderPane rootPane = new BorderPane();
-//        DraggableNodePaneMaker paneMaker = new DraggableNodePaneMaker();
-//
-//        Pane image = getDormImage(b.getText());
-//        System.out.println(b.getText());
-//        rootPane.setRight(image);
-//        rootPane.setCenter(paneMaker.createDraggableApp(paneMaker.getFurnitureNodes()));
-//        rootPane.setBottom(paneMaker.dormDataTilePane(b.getText()));
-//
-////        HBox hBox = new HBox();
-////        hBox.getChildren().addAll(rootPane);
-//
-//        return rootPane;
-//    }
-
-//    public AnchorPane displayButtonData(buttonData) {
-//        AnchorPane anchorpane = new AnchorPane();
-//
-//        HBox hb = new HBox();
-//        hb.setPadding(new Insets(0, 10, 10, 10));
-//        hb.setSpacing(10);
-////        hb.getChildren().addAll();
-//
-//        anchorpane.getChildren.addAll(buttonData, hb);
-//    }
-
     public Pane getDormImage(String dormName) throws FileNotFoundException {
+        currentDorm = dormName;
         ImageGenerator generator = new ImageGenerator();
 
-        Group imageGroup;
-        Pane imageGroupPane = null;
-//        for(Button b : buttons) {
-//            if(b.getText().equals(dormName)) {
-//                imageGroup = generator.GetImageAsGroup(dormName);
-//                imageGroupPane = createPane(800, 600, imageGroup.getChildren().toArray(new Node[0]));
-////                borderPane.setRight(imageGroupPane);
-//                break;
-//            }
-//        }
-        imageGroup = generator.GetImageAsGroup(dormName);
-        imageGroupPane = createPane(800, 600, imageGroup.getChildren().toArray(new Node[0]));
+        Group imageGroup = generator.GetImageAsGroup(dormName);
+        Pane imageGroupPane = createPane(800, 600, imageGroup.getChildren().toArray(new Node[0]));
         borderPane.setRight(imageGroupPane);
 
         return imageGroupPane;
