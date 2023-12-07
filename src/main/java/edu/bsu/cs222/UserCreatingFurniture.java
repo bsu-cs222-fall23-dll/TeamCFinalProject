@@ -19,7 +19,7 @@ import static edu.bsu.cs222.InteractiveFeatures.currentDorm;
 
 public class UserCreatingFurniture {
 
-    private static Node[] furniture = new Node[]{};
+    public static Node[] furniture = new Node[]{};
     public String[] furnitureNameArray = {"Bed.jpg", "Chair.png", "Wardrobe.png",
             "Trashcan.png", "Drawers.png", "Desk.png"};
 
@@ -111,7 +111,7 @@ public class UserCreatingFurniture {
     }
 
 
-    private void addCustomFurniture(int furnitureHeight, int furnitureWidth) {
+    public void addCustomFurniture(int furnitureHeight, int furnitureWidth) {
         Node element = new Rectangle(furnitureWidth * 40, furnitureHeight * 40, Color.RED);
 
         Node[] newFurniture = new Node[furniture.length + 1];
@@ -126,7 +126,7 @@ public class UserCreatingFurniture {
         furniture = newFurniture;
     }
 
-    private void addOldFurniture(String furnitureName) throws FileNotFoundException {
+    public void addOldFurniture(String furnitureName) throws FileNotFoundException {
         ImageGenerator imageGenerator = new ImageGenerator();
 
         Group desiredFurniture = imageGenerator.GetFurnitureImageAsGroup(furnitureName);
@@ -158,21 +158,11 @@ public class UserCreatingFurniture {
             borderPane.setRight(newImage);
 
             Node[] getFurniture = getFurnitureNodes();
-
             Node[] newFurniture = new Node[getFurniture.length + furniture.length];
 
-            for (int i = 0; i < newFurniture.length; i++) {
-                if (i < getFurniture.length) {
-                    newFurniture[i] = getFurniture[i];
-                } else {
-                    newFurniture[i] = furniture[i - getFurniture.length];
-                }
-            }
+            Node[] changedNewFurniture = furnitureLoop(newFurniture, getFurniture);
 
-
-            borderPane.setCenter(DNPM.createDraggableApp(newFurniture));
-
-
+            borderPane.setCenter(DNPM.createDraggableApp(changedNewFurniture));
 
             Stage primaryStage = new Stage();
 
@@ -186,6 +176,18 @@ public class UserCreatingFurniture {
         }
     }
 
+    public Node[] furnitureLoop(Node[] newFurniture, Node[] getFurniture) {
+        for (int i = 0; i < newFurniture.length; i++) {
+            if (i < getFurniture.length) {
+                newFurniture[i] = getFurniture[i];
+            } else {
+                newFurniture[i] = furniture[i - getFurniture.length];
+            }
+        }
+
+        return newFurniture;
+    }
+
     Node[] getFurnitureNodes() throws FileNotFoundException {
         NodeMaker nodeMaker = new NodeMaker();
         if (closetCount == 0) {
@@ -194,7 +196,7 @@ public class UserCreatingFurniture {
                     nodeMaker.makeImageNode("Drawers.png"), nodeMaker.makeImageNode("Drawers.png"),
                     nodeMaker.makeImageNode("TrashCan.png"), nodeMaker.makeImageNode("TrashCan.png"),
                     nodeMaker.makeImageNode("Bed.jpg"), nodeMaker.makeImageNode("Bed.jpg"),
-                    nodeMaker.makeImageNode("Closet.png"), nodeMaker.makeImageNode("Closet.png")};
+                    nodeMaker.makeImageNode("Wardrobe.png"), nodeMaker.makeImageNode("Wardrobe.png")};
         }
         else {
             return new Node[]{nodeMaker.makeImageNode("Chair.png"), nodeMaker.makeImageNode("Chair.png"),
