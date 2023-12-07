@@ -71,7 +71,7 @@ public class UICompiler extends Application {
         Text title = new Text("Dorm Selection");
         title.setFont(Font.font("Arial", FontWeight.BOLD, 20));
 
-        vbox.getChildren().addAll(title, button1); //root, button1, button2, button3, button4, button5, button6, button7, button8, button9, button10, button11
+        vbox.getChildren().addAll(title, button1);
         root.getChildren().add(features.getDormRoom());
 
         BorderPane.setAlignment(root, Pos.TOP_LEFT);
@@ -91,16 +91,18 @@ public class UICompiler extends Application {
 
         Group root = new Group();
         Group root2 = new Group();
+        Group root3 = new Group();
 
         root.getChildren().add(creatingFurniture.getCustomFurniture());
         root2.getChildren().add(creatingFurniture.getExistingFurniture());
+        root3.getChildren().add(creatingFurniture.deleteFurniture());
 
         Text title = new Text("Add Custom\nFurniture");
         Text title2 = new Text("Add Provided\nFurniture");
         title.setFont(Font.font("Arial", FontWeight.BOLD, 20));
         title2.setFont(Font.font("Arial", FontWeight.BOLD, 20));
 
-        vbox.getChildren().addAll(title, root, title2, root2);
+        vbox.getChildren().addAll(title, root, title2, root2, root3);
 
         return vbox;
     }

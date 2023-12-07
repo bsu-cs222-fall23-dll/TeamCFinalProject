@@ -65,6 +65,16 @@ public class UserCreatingFurniture {
         return gridPane;
     }
 
+    public Pane deleteFurniture() {
+        GridPane gridPane = new GridPane();
+        Button deleteButton = new Button("Delete All Previous Furniture");
+        deleteButton.setOnAction(e -> furniture = new Node[]{});
+
+        gridPane.add(deleteButton,1,2);
+
+        return gridPane;
+    }
+
     public ChoiceBox getSizeBox(ArrayList<ChoiceBox> choiceBoxes, int type) {
         InteractiveFeatures features = new InteractiveFeatures();
         ChoiceBox newBox = new ChoiceBox();
