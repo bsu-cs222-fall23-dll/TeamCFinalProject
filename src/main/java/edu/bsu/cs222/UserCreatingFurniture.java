@@ -27,7 +27,7 @@ public class UserCreatingFurniture {
     public Pane getCustomFurniture() {
         GridPane gridPane = new GridPane();
         Button furnitureButton = new Button("Add New Object");
-        ArrayList<ChoiceBox> choiceBoxes = new ArrayList<ChoiceBox>();
+        ArrayList<ChoiceBox> choiceBoxes = new ArrayList<>();
         furnitureButton.setOnAction(e -> {
             try {
                 clickedCustomFurnitureButton(choiceBoxes);
@@ -50,7 +50,7 @@ public class UserCreatingFurniture {
     public Pane getExistingFurniture() {
         GridPane gridPane = new GridPane();
         Button furnitureButton = new Button("Add Furniture");
-        ArrayList<ChoiceBox> choiceBoxes2 = new ArrayList<ChoiceBox>();
+        ArrayList<ChoiceBox> choiceBoxes2 = new ArrayList<>();
         furnitureButton.setOnAction(e -> {
             try {
                 clickedExistingFurnitureButton(choiceBoxes2);
