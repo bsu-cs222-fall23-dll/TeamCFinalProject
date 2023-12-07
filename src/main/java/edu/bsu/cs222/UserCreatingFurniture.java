@@ -39,11 +39,11 @@ public class UserCreatingFurniture {
         Text widthText = new Text("Width in feet");
         Text heightTest = new Text("Height in feet");
 
-        gridPane.add(widthText,0,1);
-        gridPane.add(getSizeBox(choiceBoxes,0),1,1);
-        gridPane.add(heightTest,0,2);
-        gridPane.add(getSizeBox(choiceBoxes,0),1,2);
-        gridPane.add(furnitureButton,0,3);
+        gridPane.add(widthText, 0, 1);
+        gridPane.add(getSizeBox(choiceBoxes, 0), 1, 1);
+        gridPane.add(heightTest, 0, 2);
+        gridPane.add(getSizeBox(choiceBoxes, 0), 1, 2);
+        gridPane.add(furnitureButton, 0, 3);
         return gridPane;
     }
 
@@ -59,8 +59,8 @@ public class UserCreatingFurniture {
             }
         });
 
-        gridPane.add(getSizeBox(choiceBoxes2,3),1,1);
-        gridPane.add(furnitureButton,1,2);
+        gridPane.add(getSizeBox(choiceBoxes2, 3), 1, 1);
+        gridPane.add(furnitureButton, 1, 2);
 
         return gridPane;
     }
@@ -70,7 +70,7 @@ public class UserCreatingFurniture {
         Button deleteButton = new Button("Delete All Previous Furniture");
         deleteButton.setOnAction(e -> furniture = new Node[]{});
 
-        gridPane.add(deleteButton,1,2);
+        gridPane.add(deleteButton, 1, 2);
 
         return gridPane;
     }
@@ -112,19 +112,20 @@ public class UserCreatingFurniture {
 
 
     private void addCustomFurniture(int furnitureHeight, int furnitureWidth) {
-            Node element = new Rectangle(furnitureWidth * 40, furnitureHeight * 40, Color.RED);
+        Node element = new Rectangle(furnitureWidth * 40, furnitureHeight * 40, Color.RED);
 
-            Node[] newFurniture = new Node[furniture.length + 1];
+        Node[] newFurniture = new Node[furniture.length + 1];
 
-            int i;
+        int i;
 
-            for(i = 0; i < furniture.length; i++) {
-                newFurniture[i] = furniture[i];
-            }
+        for (i = 0; i < furniture.length; i++) {
+            newFurniture[i] = furniture[i];
+        }
 
-            newFurniture[i] = element;
-            furniture = newFurniture;
+        newFurniture[i] = element;
+        furniture = newFurniture;
     }
+
     private void addOldFurniture(String furnitureName) throws FileNotFoundException {
         ImageGenerator imageGenerator = new ImageGenerator();
 
@@ -134,7 +135,7 @@ public class UserCreatingFurniture {
 
         int i;
 
-        for(i = 0; i < furniture.length; i++) {
+        for (i = 0; i < furniture.length; i++) {
             newFurniture[i] = furniture[i];
         }
 
@@ -142,7 +143,8 @@ public class UserCreatingFurniture {
         furniture = newFurniture;
 
     }
-    void spawnFurniture(){
+
+    void spawnFurniture() {
         InteractiveFeatures features = new InteractiveFeatures();
         UICompiler compiler = new UICompiler();
         DraggableNodePaneMaker DNPM = new DraggableNodePaneMaker();
@@ -150,6 +152,8 @@ public class UserCreatingFurniture {
         BorderPane borderPane = new BorderPane();
 
         try {
+            borderPane.setBottom(compiler.dormDataTilePane(currentDorm));
+
             Pane newImage = features.getDormImage(currentDorm);
             borderPane.setRight(newImage);
 
@@ -157,11 +161,10 @@ public class UserCreatingFurniture {
 
             Node[] newFurniture = new Node[getFurniture.length + furniture.length];
 
-            for(int i = 0; i < newFurniture.length; i++){
-                if(i < getFurniture.length){
+            for (int i = 0; i < newFurniture.length; i++) {
+                if (i < getFurniture.length) {
                     newFurniture[i] = getFurniture[i];
-                }
-                else{
+                } else {
                     newFurniture[i] = furniture[i - getFurniture.length];
                 }
             }
@@ -169,7 +172,7 @@ public class UserCreatingFurniture {
 
             borderPane.setCenter(DNPM.createDraggableApp(newFurniture));
 
-            borderPane.setBottom(compiler.dormDataTilePane(currentDorm));
+
 
             Stage primaryStage = new Stage();
 
@@ -182,9 +185,10 @@ public class UserCreatingFurniture {
             throw new RuntimeException(ex);
         }
     }
+
     Node[] getFurnitureNodes() throws FileNotFoundException {
         NodeMaker nodeMaker = new NodeMaker();
-        if(closetCount == 0){
+        if (closetCount == 0) {
             return new Node[]{nodeMaker.makeImageNode("Chair.png"), nodeMaker.makeImageNode("Chair.png"),
                     nodeMaker.makeImageNode("Desk.png"), nodeMaker.makeImageNode("Desk.png"),
                     nodeMaker.makeImageNode("Drawers.png"), nodeMaker.makeImageNode("Drawers.png"),
@@ -192,7 +196,7 @@ public class UserCreatingFurniture {
                     nodeMaker.makeImageNode("Bed.jpg"), nodeMaker.makeImageNode("Bed.jpg"),
                     nodeMaker.makeImageNode("Closet.png"), nodeMaker.makeImageNode("Closet.png")};
         }
-        else{
+        else {
             return new Node[]{nodeMaker.makeImageNode("Chair.png"), nodeMaker.makeImageNode("Chair.png"),
                     nodeMaker.makeImageNode("Desk.png"), nodeMaker.makeImageNode("Desk.png"),
                     nodeMaker.makeImageNode("Drawers.png"), nodeMaker.makeImageNode("Drawers.png"),
@@ -201,3 +205,5 @@ public class UserCreatingFurniture {
         }
     }
 }
+
+
