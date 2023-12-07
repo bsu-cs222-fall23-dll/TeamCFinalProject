@@ -50,7 +50,7 @@ public class UserCreatingFurniture {
         ArrayList<ChoiceBox> choiceBoxes2 = new ArrayList<ChoiceBox>();
         furnitureButton.setOnAction(e -> {
             try {
-                gridPane.add(clickedExistingFurnitureButton(choiceBoxes2), 2, 3);
+                clickedExistingFurnitureButton(choiceBoxes2);
             } catch (FileNotFoundException ex) {
                 throw new RuntimeException(ex);
             }
@@ -84,19 +84,11 @@ public class UserCreatingFurniture {
         return choice.getValue().toString();
     }
 
-    public Pane clickedExistingFurnitureButton(ArrayList<ChoiceBox> choiceBoxes2) throws FileNotFoundException {
+    public void clickedExistingFurnitureButton(ArrayList<ChoiceBox> choiceBoxes2) throws FileNotFoundException {
         DraggableNodePaneMaker paneMaker = new DraggableNodePaneMaker();
         String chosenFurniture = getChoice(choiceBoxes2.get(0));
 
         addOldFurniture(chosenFurniture);
-
-        GridPane gridPane = new GridPane();
-        Pane image = getFurnitureImage(chosenFurniture);
-        paneMaker.borderPane.setCenter(paneMaker.createDraggableApp(new Pane[]{image}));
-
-        gridPane.add(image, 0, 0);
-        return gridPane;
-
     }
 
     public void clickedCustomFurnitureButton(ArrayList<ChoiceBox> choices) throws FileNotFoundException {
