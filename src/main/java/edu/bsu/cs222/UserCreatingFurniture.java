@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
-import static edu.bsu.cs222.Compiler.closetCount;
+import static edu.bsu.cs222.UICompiler.closetCount;
 import static edu.bsu.cs222.InteractiveFeatures.currentDorm;
 
 public class UserCreatingFurniture {
@@ -134,7 +134,7 @@ public class UserCreatingFurniture {
     }
     void spawnFurniture(){
         InteractiveFeatures features = new InteractiveFeatures();
-        Compiler compiler = new Compiler();
+        UICompiler compiler = new UICompiler();
         DraggableNodePaneMaker DNPM = new DraggableNodePaneMaker();
 
         BorderPane borderPane = new BorderPane();
