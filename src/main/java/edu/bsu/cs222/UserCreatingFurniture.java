@@ -151,6 +151,7 @@ public class UserCreatingFurniture {
     }
     void spawnFurniture(){
         InteractiveFeatures features = new InteractiveFeatures();
+        Compiler compiler = new Compiler();
         DraggableNodePaneMaker DNPM = new DraggableNodePaneMaker();
 
         BorderPane borderPane = new BorderPane();
@@ -159,7 +160,7 @@ public class UserCreatingFurniture {
             Pane newImage = features.getDormImage(features.currentDorm);
             borderPane.setRight(newImage);
 
-            Node[] getFurniture = DNPM.getFurnitureNodes();
+            Node[] getFurniture = compiler.getFurnitureNodes();
 
             Node[] newFurniture = new Node[getFurniture.length + furniture.length];
 
@@ -175,7 +176,7 @@ public class UserCreatingFurniture {
 
             borderPane.setCenter(DNPM.createDraggableApp(newFurniture));
 
-            borderPane.setBottom(DNPM.dormDataTilePane(features.currentDorm));
+            borderPane.setBottom(compiler.dormDataTilePane(features.currentDorm));
 
             Stage primaryStage = new Stage();
 
