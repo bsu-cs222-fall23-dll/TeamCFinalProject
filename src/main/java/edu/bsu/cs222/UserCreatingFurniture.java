@@ -14,6 +14,8 @@ import javafx.stage.Stage;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
+import static edu.bsu.cs222.InteractiveFeatures.currentDorm;
+
 public class UserCreatingFurniture {
 
     private static Node[] furniture = new Node[]{};
@@ -85,7 +87,6 @@ public class UserCreatingFurniture {
     }
 
     public void clickedExistingFurnitureButton(ArrayList<ChoiceBox> choiceBoxes2) throws FileNotFoundException {
-        DraggableNodePaneMaker paneMaker = new DraggableNodePaneMaker();
         String chosenFurniture = getChoice(choiceBoxes2.get(0));
 
         addOldFurniture(chosenFurniture);
@@ -98,17 +99,6 @@ public class UserCreatingFurniture {
         addCustomFurniture(furnitureHeight, furnitureWidth);
     }
 
-    public Pane getFurnitureImage(String furnitureName) throws FileNotFoundException {
-        ImageGenerator generator = new ImageGenerator();
-        DraggableNodePaneMaker paneMaker = new DraggableNodePaneMaker();
-
-        Group imageGroup = generator.GetFurnitureImageAsGroup(furnitureName);
-        Pane imageGroupPane = paneMaker.createPane(800, 600, imageGroup.getChildren().toArray(new Node[0]));
-        paneMaker.borderPane.setRight(imageGroupPane);
-
-
-        return imageGroupPane;
-    }
 
     private void addCustomFurniture(int furnitureHeight, int furnitureWidth) {
             Node element = new Rectangle(furnitureWidth * 40, furnitureHeight * 40, Color.RED);
@@ -149,7 +139,7 @@ public class UserCreatingFurniture {
         BorderPane borderPane = new BorderPane();
 
         try {
-            Pane newImage = features.getDormImage(features.currentDorm);
+            Pane newImage = features.getDormImage(currentDorm);
             borderPane.setRight(newImage);
 
             Node[] getFurniture = compiler.getFurnitureNodes();
@@ -168,7 +158,7 @@ public class UserCreatingFurniture {
 
             borderPane.setCenter(DNPM.createDraggableApp(newFurniture));
 
-            borderPane.setBottom(compiler.dormDataTilePane(features.currentDorm));
+            borderPane.setBottom(compiler.dormDataTilePane(currentDorm));
 
             Stage primaryStage = new Stage();
 

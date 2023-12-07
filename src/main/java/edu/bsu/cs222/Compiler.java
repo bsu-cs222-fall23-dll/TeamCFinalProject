@@ -69,9 +69,6 @@ public class Compiler extends Application {
                     nodeMaker.makeImageNode("TrashCan.png"), nodeMaker.makeImageNode("TrashCan.png"),
                     nodeMaker.makeImageNode("Bed.jpg"), nodeMaker.makeImageNode("Bed.jpg")};
         }
-
-
-
     }
 
     public VBox addVBox() {
