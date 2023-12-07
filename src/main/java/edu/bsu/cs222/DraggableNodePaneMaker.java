@@ -15,14 +15,14 @@ import javafx.stage.Stage;
 
 import java.io.FileNotFoundException;
 
+import static edu.bsu.cs222.InteractiveFeatures.currentDorm;
+
 
 public class DraggableNodePaneMaker extends Application {
     public BorderPane borderPane = new BorderPane();
 
     @Override
-    public void start(Stage primaryStage) throws FileNotFoundException {
-        InteractiveFeatures features = new InteractiveFeatures();
-
+    public void start(Stage primaryStage){
         HBox hBox = addHBox();
         VBox vBox = addVBox();
         VBox vBoxCustomFurniture = addVBoxFurniture();
@@ -59,9 +59,8 @@ public class DraggableNodePaneMaker extends Application {
 
     public Node[] getFurnitureNodes() throws FileNotFoundException {
         NodeMaker nodeMaker = new NodeMaker();
-        InteractiveFeatures features = new InteractiveFeatures();
 
-        if(features.currentDorm.equals("Dehority")|| features.currentDorm.equals("Woodworth")){
+        if(currentDorm.equals("Dehority")|| currentDorm.equals("Woodworth")){
             return new Node[]{nodeMaker.makeImageNode("Bed.jpg"), nodeMaker.makeImageNode("Chair.png"),
                     nodeMaker.makeImageNode("Desk.png"), nodeMaker.makeImageNode("Drawers.png"), nodeMaker.makeImageNode("TrashCan.png")};
         }
@@ -78,9 +77,8 @@ public class DraggableNodePaneMaker extends Application {
 
     }
 
-    public VBox addVBox() throws FileNotFoundException {
+    public VBox addVBox() {
         InteractiveFeatures features = new InteractiveFeatures();
-        UserCreatingFurniture furnitureNodes = new UserCreatingFurniture();
 
         VBox vbox = new VBox();
         vbox.setPadding(new Insets(10));
@@ -112,7 +110,6 @@ public class DraggableNodePaneMaker extends Application {
     }
 
     public VBox addVBoxFurniture() {
-        InteractiveFeatures features = new InteractiveFeatures();
         UserCreatingFurniture creatingFurniture = new UserCreatingFurniture();
 
         VBox vbox = new VBox();
