@@ -103,7 +103,7 @@ public class UserCreatingFurniture {
         int furnitureWidth = Integer.parseInt(getChoice(choices.get(0)));
         int furnitureHeight = Integer.parseInt(getChoice(choices.get(1)));
 
-        addNewFurniture(furnitureHeight, furnitureWidth);
+        addCustomFurniture(furnitureHeight, furnitureWidth);
     }
 
     public Pane getFurnitureImage(String furnitureName) throws FileNotFoundException {
@@ -118,7 +118,7 @@ public class UserCreatingFurniture {
         return imageGroupPane;
     }
 
-    private void addNewFurniture(int furnitureHeight, int furnitureWidth) {
+    private void addCustomFurniture(int furnitureHeight, int furnitureWidth) {
             Node element = new Rectangle(furnitureWidth * 40, furnitureHeight * 40, Color.RED);
 
             Node[] newFurniture = new Node[furniture.length + 1];
