@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class InteractiveFeatures extends DraggableNodePaneMaker {
 
-    public static String currentDorm = "Woodworth";
+    public static String currentDorm = "Dehority";
     public String[] dormNames = {"Dehority",
     "Park", "Beyerl", "Botsford-Swinford", "Kinghorn",
     "North West", "Noyer", "Schmidt-Wilson", "Studebaker East",
@@ -32,10 +32,8 @@ public class InteractiveFeatures extends DraggableNodePaneMaker {
             }
         });
 
-        //add dorm names b/c choiceBoxes(1) {getSizeBox()}
         gridPane.add(furnitureFunction.getSizeBox(choiceBoxes,1),0,1);
 
-        //add created dorm image in gridPane
         gridPane.add(dormRoomButton,0,2);
         return gridPane;
     }
@@ -54,10 +52,8 @@ public class InteractiveFeatures extends DraggableNodePaneMaker {
         currentDorm = dormName;
         ImageGenerator generator = new ImageGenerator();
 
-        Group imageGroup;
-        Pane imageGroupPane = null;
-        imageGroup = generator.GetImageAsGroup(dormName);
-        imageGroupPane = createPane(800, 600, imageGroup.getChildren().toArray(new Node[0]));
+        Group imageGroup = generator.GetImageAsGroup(dormName);
+        Pane imageGroupPane = createPane(800, 600, imageGroup.getChildren().toArray(new Node[0]));
         borderPane.setRight(imageGroupPane);
 
         return imageGroupPane;
