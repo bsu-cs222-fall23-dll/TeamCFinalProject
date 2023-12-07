@@ -25,9 +25,11 @@ public class DraggableNodePaneMaker extends Application {
         HBox hBox = addHBox();
         VBox vBox = addVBox();
         VBox vBoxCustomFurniture = addVBoxFurniture();
+        GridPane gridPaneCenter = gridPaneCenterFeatures();
         borderPane.setTop(hBox);
-        borderPane.setLeft(vBox);
+       // borderPane.setLeft(vBox);
         borderPane.setRight(vBoxCustomFurniture);
+        borderPane.setCenter(gridPaneCenter);
 
         primaryStage.setScene(new Scene(borderPane));
         primaryStage.setWidth(1200);
@@ -66,13 +68,12 @@ public class DraggableNodePaneMaker extends Application {
 
     public VBox addVBox() throws FileNotFoundException {
         InteractiveFeatures features = new InteractiveFeatures();
+        UserCreatingFurniture furniture = new UserCreatingFurniture();
 
         VBox vbox = new VBox();
         vbox.setPadding(new Insets(10));
         vbox.setSpacing(8);
         vbox.setStyle("-fx-background-color: #DAE6F3;");
-
-        Group root = new Group();
 
         Button button1 = new Button("Dehority");
 
@@ -93,19 +94,39 @@ public class DraggableNodePaneMaker extends Application {
         Text title = new Text("Dorm Selection");
         title.setFont(Font.font("Arial", FontWeight.BOLD, 20));
 
-        root.getChildren().add(features.getDormRoom());
-        vbox.getChildren().addAll(title, root); //button1
+    //    GridPane gridPane = gridPaneCenterFeatures();
 
-        BorderPane.setAlignment(root, Pos.TOP_LEFT);
-        BorderPane.setMargin(root, new Insets(12,12,12,12));
-        borderPane.setCenter(root);
+        vbox.getChildren().addAll(title); //button1, gridPane
 
         return vbox;
     }
 
+    public GridPane gridPaneCenterFeatures() {
+        InteractiveFeatures features = new InteractiveFeatures();
+        UserCreatingFurniture furniture = new UserCreatingFurniture();
+        GridPane gridPane = new GridPane();
+        Group root = new Group();
+        Group root2 = new Group();
+
+        root.getChildren().add(features.getDormRoom());
+        root2.getChildren().add(features.getFurniture());
+
+      //  BorderPane.setAlignment(root, Pos.TOP_LEFT);
+      //  BorderPane.setMargin(root, new Insets(12,12,12,12));
+        borderPane.setRight(root);
+
+       // BorderPane.setAlignment(root2, Pos.BOTTOM_LEFT);
+       // BorderPane.setMargin(root2, new Insets(12,12,12,12));
+        borderPane.setCenter(root2);
+
+        gridPane.add(root, 0, 0);
+        gridPane.add(root2, 1, 0);
+
+        return gridPane;
+    }
+
     public VBox addVBoxFurniture() {
         InteractiveFeatures features = new InteractiveFeatures();
-        UserCreatingFurniture creatingFurniture = new UserCreatingFurniture();
 
         VBox vbox = new VBox();
         vbox.setPadding(new Insets(10));
@@ -115,8 +136,8 @@ public class DraggableNodePaneMaker extends Application {
         Group root = new Group();
         Group root2 = new Group();
 
-        root.getChildren().add(creatingFurniture.getCustomFurniture());
-        root2.getChildren().add(creatingFurniture.getFurniture());
+        root.getChildren().add(features.getCustomFurniture());
+        root2.getChildren().add(features.getFurniture());
 
         Text title = new Text("Add Custom\nFurniture");
         Text title2 = new Text("Add Provided\nFurniture");
