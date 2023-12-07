@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
+import static edu.bsu.cs222.Compiler.closetCount;
 import static edu.bsu.cs222.InteractiveFeatures.currentDorm;
 
 public class UserCreatingFurniture {
@@ -142,7 +143,7 @@ public class UserCreatingFurniture {
             Pane newImage = features.getDormImage(currentDorm);
             borderPane.setRight(newImage);
 
-            Node[] getFurniture = compiler.getFurnitureNodes();
+            Node[] getFurniture = getFurnitureNodes();
 
             Node[] newFurniture = new Node[getFurniture.length + furniture.length];
 
@@ -169,6 +170,24 @@ public class UserCreatingFurniture {
 
         } catch (FileNotFoundException ex) {
             throw new RuntimeException(ex);
+        }
+    }
+    Node[] getFurnitureNodes() throws FileNotFoundException {
+        NodeMaker nodeMaker = new NodeMaker();
+        if(closetCount == 0){
+            return new Node[]{nodeMaker.makeImageNode("Chair.png"), nodeMaker.makeImageNode("Chair.png"),
+                    nodeMaker.makeImageNode("Desk.png"), nodeMaker.makeImageNode("Desk.png"),
+                    nodeMaker.makeImageNode("Drawers.png"), nodeMaker.makeImageNode("Drawers.png"),
+                    nodeMaker.makeImageNode("TrashCan.png"), nodeMaker.makeImageNode("TrashCan.png"),
+                    nodeMaker.makeImageNode("Bed.jpg"), nodeMaker.makeImageNode("Bed.jpg"),
+                    nodeMaker.makeImageNode("Closet.png"), nodeMaker.makeImageNode("Closet.png")};
+        }
+        else{
+            return new Node[]{nodeMaker.makeImageNode("Chair.png"), nodeMaker.makeImageNode("Chair.png"),
+                    nodeMaker.makeImageNode("Desk.png"), nodeMaker.makeImageNode("Desk.png"),
+                    nodeMaker.makeImageNode("Drawers.png"), nodeMaker.makeImageNode("Drawers.png"),
+                    nodeMaker.makeImageNode("TrashCan.png"), nodeMaker.makeImageNode("TrashCan.png"),
+                    nodeMaker.makeImageNode("Bed.jpg"), nodeMaker.makeImageNode("Bed.jpg")};
         }
     }
 }

@@ -19,7 +19,7 @@ import java.io.FileNotFoundException;
 
 public class Compiler extends Application {
     BorderPane borderPane = new BorderPane();
-    private static int closetCount;
+    public static int closetCount;
     @Override
     public void start(Stage primaryStage){
         HBox hBox = addHBox();
@@ -50,25 +50,6 @@ public class Compiler extends Application {
         hbox.getChildren().add(title);
 
         return hbox;
-    }
-
-    public Node[] getFurnitureNodes() throws FileNotFoundException {
-        NodeMaker nodeMaker = new NodeMaker();
-        if(closetCount == 0){
-            return new Node[]{nodeMaker.makeImageNode("Chair.png"), nodeMaker.makeImageNode("Chair.png"),
-                    nodeMaker.makeImageNode("Desk.png"), nodeMaker.makeImageNode("Desk.png"),
-                    nodeMaker.makeImageNode("Drawers.png"), nodeMaker.makeImageNode("Drawers.png"),
-                    nodeMaker.makeImageNode("TrashCan.png"), nodeMaker.makeImageNode("TrashCan.png"),
-                    nodeMaker.makeImageNode("Bed.jpg"), nodeMaker.makeImageNode("Bed.jpg"),
-                    nodeMaker.makeImageNode("Closet.png"), nodeMaker.makeImageNode("Closet.png")};
-        }
-        else{
-            return new Node[]{nodeMaker.makeImageNode("Chair.png"), nodeMaker.makeImageNode("Chair.png"),
-                    nodeMaker.makeImageNode("Desk.png"), nodeMaker.makeImageNode("Desk.png"),
-                    nodeMaker.makeImageNode("Drawers.png"), nodeMaker.makeImageNode("Drawers.png"),
-                    nodeMaker.makeImageNode("TrashCan.png"), nodeMaker.makeImageNode("TrashCan.png"),
-                    nodeMaker.makeImageNode("Bed.jpg"), nodeMaker.makeImageNode("Bed.jpg")};
-        }
     }
 
     public VBox addVBox() {
