@@ -23,11 +23,11 @@ public class UserCreatingFurniture {
 
     public Pane getCustomFurniture() {
         GridPane gridPane = new GridPane();
-        Button furnitureButton = new Button("Create Furniture");
+        Button furnitureButton = new Button("Create New Object");
         ArrayList<ChoiceBox> choiceBoxes = new ArrayList<ChoiceBox>();
         furnitureButton.setOnAction(e -> {
             try {
-                clickedFurnitureButton(choiceBoxes);
+                clickedCustomFurnitureButton(choiceBoxes);
             } catch (FileNotFoundException ex) {
                 throw new RuntimeException(ex);
             }
@@ -95,6 +95,28 @@ public class UserCreatingFurniture {
         gridPane.add(image, 0, 0);
         return gridPane;
 
+    }
+
+    public Pane clickedCustomFurnitureButton(ArrayList<ChoiceBox> choices) throws FileNotFoundException {
+        DraggableNodePaneMaker paneMaker = new DraggableNodePaneMaker();
+        int furnitureWidth = Integer.parseInt(getChoice(choices.get(0)));
+        int furnitureHeight = Integer.parseInt(getChoice(choices.get(1)));
+//        int bed = Integer.parseInt(getChoice(choices.get(2)));
+
+        String chosenFurniture = "Bed.jpg";
+        //getChoice(choices.get(0)); //gets the chosen value of choice box; maybe not usable for furniture?
+        GridPane gridPane = new GridPane();
+        Pane image = getFurnitureImage(chosenFurniture);
+
+        //why does image spawn in gridpane when it's set to borderPane??
+        paneMaker.borderPane.setCenter(paneMaker.createDraggableApp(new Pane[]{image}));
+
+
+        gridPane.add(image, 0, 0);
+
+        addNewFurniture(furnitureHeight, furnitureWidth);
+
+        return gridPane;
     }
 
     public Pane getFurnitureImage(String furnitureName) throws FileNotFoundException {
