@@ -18,6 +18,7 @@ import static edu.bsu.cs222.UICompiler.closetCount;
 import static edu.bsu.cs222.InteractiveFeatures.currentDorm;
 
 public class UserCreatingFurniture {
+    //meow
 
     private static Node[] furniture = new Node[]{};
     public String[] furnitureNameArray = {"Bed.jpg", "Chair.png", "Wardrobe.png",
