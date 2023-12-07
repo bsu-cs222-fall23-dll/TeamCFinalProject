@@ -20,7 +20,7 @@ import static edu.bsu.cs222.InteractiveFeatures.currentDorm;
 public class UserCreatingFurniture {
 
     public static Node[] furniture = new Node[]{};
-    public String[] furnitureNameArray = {"Bed.jpg", "Chair.png", "Closet.png",
+    public String[] furnitureNameArray = {"Bed.jpg", "Chair.png", "Wardrobe.png",
             "Trashcan.png", "Drawers.png", "Desk.png"};
 
 
@@ -196,7 +196,7 @@ public class UserCreatingFurniture {
                     nodeMaker.makeImageNode("Drawers.png"), nodeMaker.makeImageNode("Drawers.png"),
                     nodeMaker.makeImageNode("TrashCan.png"), nodeMaker.makeImageNode("TrashCan.png"),
                     nodeMaker.makeImageNode("Bed.jpg"), nodeMaker.makeImageNode("Bed.jpg"),
-                    nodeMaker.makeImageNode("Closet.png"), nodeMaker.makeImageNode("Closet.png")};
+                    nodeMaker.makeImageNode("Wardrobe.png"), nodeMaker.makeImageNode("Wardrobe.png")};
         }
         else {
             return new Node[]{nodeMaker.makeImageNode("Chair.png"), nodeMaker.makeImageNode("Chair.png"),
