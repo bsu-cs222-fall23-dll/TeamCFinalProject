@@ -17,10 +17,9 @@ import javafx.stage.Stage;
 
 import java.io.FileNotFoundException;
 
-import static edu.bsu.cs222.InteractiveFeatures.currentDorm;
-
 public class Compiler extends Application {
     BorderPane borderPane = new BorderPane();
+    private static int closetCount;
     @Override
     public void start(Stage primaryStage){
         HBox hBox = addHBox();
@@ -55,18 +54,20 @@ public class Compiler extends Application {
 
     public Node[] getFurnitureNodes() throws FileNotFoundException {
         NodeMaker nodeMaker = new NodeMaker();
-
-        if(currentDorm.equals("Dehority")|| currentDorm.equals("Woodworth")){
-            return new Node[]{nodeMaker.makeImageNode("Bed.jpg"), nodeMaker.makeImageNode("Chair.png"),
-                    nodeMaker.makeImageNode("Desk.png"), nodeMaker.makeImageNode("Drawers.png"), nodeMaker.makeImageNode("TrashCan.png")};
+        if(closetCount == 0){
+            return new Node[]{nodeMaker.makeImageNode("Chair.png"), nodeMaker.makeImageNode("Chair.png"),
+                    nodeMaker.makeImageNode("Desk.png"), nodeMaker.makeImageNode("Desk.png"),
+                    nodeMaker.makeImageNode("Drawers.png"), nodeMaker.makeImageNode("Drawers.png"),
+                    nodeMaker.makeImageNode("TrashCan.png"), nodeMaker.makeImageNode("TrashCan.png"),
+                    nodeMaker.makeImageNode("Bed.jpg"), nodeMaker.makeImageNode("Bed.jpg"),
+                    nodeMaker.makeImageNode("Closet.png"), nodeMaker.makeImageNode("Closet.png")};
         }
         else{
-            return new Node[]{nodeMaker.makeImageNode("Bed.jpg"), nodeMaker.makeImageNode("Chair.png"),
-                    nodeMaker.makeImageNode("Desk.png"), nodeMaker.makeImageNode("Drawers.png"), nodeMaker.makeImageNode("TrashCan.png"),
-                    nodeMaker.makeImageNode("Bed.jpg"), nodeMaker.makeImageNode("Chair.png"),
-                    nodeMaker.makeImageNode("Desk.png"), nodeMaker.makeImageNode("Drawers.png"), nodeMaker.makeImageNode("TrashCan.png")
-
-            };
+            return new Node[]{nodeMaker.makeImageNode("Chair.png"), nodeMaker.makeImageNode("Chair.png"),
+                    nodeMaker.makeImageNode("Desk.png"), nodeMaker.makeImageNode("Desk.png"),
+                    nodeMaker.makeImageNode("Drawers.png"), nodeMaker.makeImageNode("Drawers.png"),
+                    nodeMaker.makeImageNode("TrashCan.png"), nodeMaker.makeImageNode("TrashCan.png"),
+                    nodeMaker.makeImageNode("Bed.jpg"), nodeMaker.makeImageNode("Bed.jpg")};
         }
 
 
@@ -181,33 +182,42 @@ public class Compiler extends Application {
         String key = null;
         title.setFont(Font.font("Arial", FontWeight.BOLD, 20));
         switch (dormName) {
-            case "Dehority", "Noyer", "Studebaker West", "Woodworth" -> key = """
-                    Chair(s): 2
-                    Bed(s): 2
-                    Trashcan(s): 2
-                    Desk(s): 2
-                    Dresser(s): 2
-                    Wardrobe(s): 2
-                    Closet(s): 0
-                    """;
-            case "Beyerl", "Schmidt-Wilson", "North West", "Botsford-Swinford" -> key = """
-                    Chair(s): 2
-                    Bed(s): 2
-                    Trashcan(s): 2
-                    Desk(s): 2
-                    Dresser(s): 2
-                    Wardrobe(s): 0
-                    Closet(s): 2
-                    """;
-            case "Park", "Studebaker East", "Kinghorn" -> key = """
-                    Chair(s): 2
-                    Bed(s): 2
-                    Trashcan(s): 2
-                    Desk(s): 2
-                    Dresser(s): 2
-                    Wardrobe(s): 0
-                    Closet(s): 1
-                    """;
+            case "Dehority", "Noyer", "Studebaker West", "Woodworth" -> {
+                key = """
+                        Chair(s): 2
+                        Bed(s): 2
+                        Trashcan(s): 2
+                        Desk(s): 2
+                        Dresser(s): 2
+                        Wardrobe(s): 2
+                        Closet(s): 0
+                        """;
+                closetCount = 0;
+            }
+            case "Beyerl", "Schmidt-Wilson", "North West", "Botsford-Swinford" -> {
+                key = """
+                        Chair(s): 2
+                        Bed(s): 2
+                        Trashcan(s): 2
+                        Desk(s): 2
+                        Dresser(s): 2
+                        Wardrobe(s): 0
+                        Closet(s): 2
+                        """;
+                closetCount = 2;
+            }
+            case "Park", "Studebaker East", "Kinghorn" -> {
+                key = """
+                        Chair(s): 2
+                        Bed(s): 2
+                        Trashcan(s): 2
+                        Desk(s): 2
+                        Dresser(s): 2
+                        Wardrobe(s): 0
+                        Closet(s): 1
+                        """;
+                closetCount = 1;
+            }
         }
 
         label = new Label(key);
