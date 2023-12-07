@@ -59,9 +59,9 @@ public class UICompiler extends Application {
 
         Group root = new Group();
 
-        Button button1 = new Button("Show me my room!");
+        Button revealButton = new Button("Show me my room!");
 
-        button1.setOnAction(e -> {
+        revealButton.setOnAction(e -> {
             UserCreatingFurniture creatingFurniture = new UserCreatingFurniture();
 
             creatingFurniture.spawnFurniture();
@@ -71,7 +71,7 @@ public class UICompiler extends Application {
         Text title = new Text("Dorm Selection");
         title.setFont(Font.font("Arial", FontWeight.BOLD, 20));
 
-        vbox.getChildren().addAll(title, button1);
+        vbox.getChildren().addAll(title, revealButton);
         root.getChildren().add(features.getDormRoom());
 
         BorderPane.setAlignment(root, Pos.TOP_LEFT);
@@ -170,6 +170,7 @@ public class UICompiler extends Application {
                         Closet(s): 0
                         """;
                 closetCount = 0;
+                System.out.println(closetCount + "");
             }
             case "Beyerl", "Schmidt-Wilson", "North West", "Botsford-Swinford" -> {
                 key = """
@@ -182,6 +183,7 @@ public class UICompiler extends Application {
                         Closet(s): 2
                         """;
                 closetCount = 2;
+                System.out.println(closetCount + "");
             }
             case "Park", "Studebaker East", "Kinghorn" -> {
                 key = """
@@ -194,6 +196,7 @@ public class UICompiler extends Application {
                         Closet(s): 1
                         """;
                 closetCount = 1;
+                System.out.println(closetCount + "");
             }
         }
 
