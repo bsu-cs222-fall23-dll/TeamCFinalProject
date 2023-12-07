@@ -44,15 +44,13 @@ public class UserCreatingFurniture {
         return gridPane;
     }
 
-    public Pane getFurniture() {
+    public Pane getExistingFurniture() {
         GridPane gridPane = new GridPane();
-        DraggableNodePaneMaker paneMaker = new DraggableNodePaneMaker();
         Button furnitureButton = new Button("Create Furniture");
         ArrayList<ChoiceBox> choiceBoxes2 = new ArrayList<ChoiceBox>();
         furnitureButton.setOnAction(e -> {
             try {
-                System.out.println("hi");
-                gridPane.add(clickedFurnitureButton(choiceBoxes2), 2, 3);
+                gridPane.add(clickedExistingFurnitureButton(choiceBoxes2), 2, 3);
             } catch (FileNotFoundException ex) {
                 throw new RuntimeException(ex);
             }
@@ -67,10 +65,14 @@ public class UserCreatingFurniture {
     public ChoiceBox getSizeBox(ArrayList<ChoiceBox> choiceBoxes, int type) {
         InteractiveFeatures features = new InteractiveFeatures();
         ChoiceBox newBox = new ChoiceBox();
-        if (type == 0) newBox.getItems().addAll(1, 2, 3, 4, 5, 6, 7, 8);
-        if (type == 1) newBox.getItems().addAll(features.dormNames);
-        if (type == 2) newBox.getItems().addAll(1, 2);
-        if (type == 3) newBox.getItems().addAll(furnitureNameArray);
+        if (type == 0)
+            newBox.getItems().addAll(1, 2, 3, 4, 5, 6, 7, 8);
+        if (type == 1)
+            newBox.getItems().addAll(features.dormNames);
+        if (type == 2)
+            newBox.getItems().addAll(1, 2);
+        if (type == 3)
+            newBox.getItems().addAll(furnitureNameArray);
 
 
         newBox.getSelectionModel().select(0);
@@ -82,7 +84,7 @@ public class UserCreatingFurniture {
         return choice.getValue().toString();
     }
 
-    public Pane clickedFurnitureButton(ArrayList<ChoiceBox> choiceBoxes2) throws FileNotFoundException {
+    public Pane clickedExistingFurnitureButton(ArrayList<ChoiceBox> choiceBoxes2) throws FileNotFoundException {
         DraggableNodePaneMaker paneMaker = new DraggableNodePaneMaker();
         String chosenFurniture = getChoice(choiceBoxes2.get(0));
 
@@ -97,37 +99,19 @@ public class UserCreatingFurniture {
 
     }
 
-    public Pane clickedCustomFurnitureButton(ArrayList<ChoiceBox> choices) throws FileNotFoundException {
-        DraggableNodePaneMaker paneMaker = new DraggableNodePaneMaker();
+    public void clickedCustomFurnitureButton(ArrayList<ChoiceBox> choices) throws FileNotFoundException {
         int furnitureWidth = Integer.parseInt(getChoice(choices.get(0)));
         int furnitureHeight = Integer.parseInt(getChoice(choices.get(1)));
-//        int bed = Integer.parseInt(getChoice(choices.get(2)));
-
-        String chosenFurniture = "Bed.jpg";
-        //getChoice(choices.get(0)); //gets the chosen value of choice box; maybe not usable for furniture?
-        GridPane gridPane = new GridPane();
-        Pane image = getFurnitureImage(chosenFurniture);
-
-        //why does image spawn in gridpane when it's set to borderPane??
-        paneMaker.borderPane.setCenter(paneMaker.createDraggableApp(new Pane[]{image}));
-
-
-        gridPane.add(image, 0, 0);
 
         addNewFurniture(furnitureHeight, furnitureWidth);
-
-        return gridPane;
     }
 
     public Pane getFurnitureImage(String furnitureName) throws FileNotFoundException {
         ImageGenerator generator = new ImageGenerator();
         DraggableNodePaneMaker paneMaker = new DraggableNodePaneMaker();
 
-        Group imageGroup;
-        Pane imageGroupPane = null;
-
-        imageGroup = generator.GetFurnitureImageAsGroup(furnitureName);
-        imageGroupPane = paneMaker.createPane(800, 600, imageGroup.getChildren().toArray(new Node[0]));
+        Group imageGroup = generator.GetFurnitureImageAsGroup(furnitureName);
+        Pane imageGroupPane = paneMaker.createPane(800, 600, imageGroup.getChildren().toArray(new Node[0]));
         paneMaker.borderPane.setRight(imageGroupPane);
 
 

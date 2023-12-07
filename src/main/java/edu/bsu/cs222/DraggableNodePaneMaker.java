@@ -124,7 +124,7 @@ public class DraggableNodePaneMaker extends Application {
         Group root2 = new Group();
 
         root.getChildren().add(creatingFurniture.getCustomFurniture());
-        root2.getChildren().add(creatingFurniture.getFurniture());
+        root2.getChildren().add(creatingFurniture.getExistingFurniture());
 
         Text title = new Text("Add Custom\nFurniture");
         Text title2 = new Text("Add Provided\nFurniture");
