@@ -36,7 +36,7 @@ public class UserCreatingFurnitureTest {
         Node[] getFurniture = new Node[]{nodeMaker.makeImageNode("Chair.png")};
         Node[] newFurniture = new Node[getFurniture.length + furniture.length];
 
-        Node[] newFurnitureArray = userFurniture.furnitureLoop(newFurniture, getFurniture);
+        Node[] newFurnitureArray = userFurniture.spawnFurnitureLoop(newFurniture, getFurniture);
         Assertions.assertEquals(1, newFurnitureArray.length);
     }
 

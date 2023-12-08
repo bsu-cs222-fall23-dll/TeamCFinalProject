@@ -169,7 +169,7 @@ public class UserCreatingFurniture {
             Node[] getFurniture = getFurnitureNodes();
             Node[] newFurniture = new Node[getFurniture.length + furniture.length];
 
-            Node[] changedNewFurniture = furnitureLoop(newFurniture, getFurniture);
+            Node[] changedNewFurniture = spawnFurnitureLoop(newFurniture, getFurniture);
 
             borderPane.setCenter(DNPM.createDraggableApp(changedNewFurniture));
 
@@ -185,7 +185,7 @@ public class UserCreatingFurniture {
         }
     }
 
-    public Node[] furnitureLoop(Node[] newFurniture, Node[] getFurniture) {
+    public Node[] spawnFurnitureLoop(Node[] newFurniture, Node[] getFurniture) {
         for (int i = 0; i < newFurniture.length; i++) {
             if (i < getFurniture.length) {
                 newFurniture[i] = getFurniture[i];
