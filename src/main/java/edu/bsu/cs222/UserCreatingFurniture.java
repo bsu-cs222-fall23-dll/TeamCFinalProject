@@ -27,7 +27,7 @@ public class UserCreatingFurniture {
     public Pane getCustomFurniture() {
         GridPane gridPane = new GridPane();
         Button furnitureButton = new Button("Add New Object");
-        ArrayList<ChoiceBox> choiceBoxes = new ArrayList<ChoiceBox>();
+        ArrayList<ChoiceBox> choiceBoxes = new ArrayList<>();
         furnitureButton.setOnAction(e -> {
             try {
                 clickedCustomFurnitureButton(choiceBoxes);
@@ -50,7 +50,7 @@ public class UserCreatingFurniture {
     public Pane getExistingFurniture() {
         GridPane gridPane = new GridPane();
         Button furnitureButton = new Button("Add Furniture");
-        ArrayList<ChoiceBox> choiceBoxes2 = new ArrayList<ChoiceBox>();
+        ArrayList<ChoiceBox> choiceBoxes2 = new ArrayList<>();
         furnitureButton.setOnAction(e -> {
             try {
                 clickedExistingFurnitureButton(choiceBoxes2);
@@ -116,6 +116,11 @@ public class UserCreatingFurniture {
 
         Node[] newFurniture = new Node[furniture.length + 1];
 
+        addCustomFurnitureLoop(newFurniture, element);
+
+    }
+
+    public void addCustomFurnitureLoop(Node[] newFurniture, Node element) {
         int i;
 
         for (i = 0; i < furniture.length; i++) {
@@ -133,6 +138,11 @@ public class UserCreatingFurniture {
 
         Node[] newFurniture = new Node[furniture.length + 1];
 
+        addOldFurnitureLoop(newFurniture, desiredFurniture);
+
+    }
+
+    public void addOldFurnitureLoop(Node[] newFurniture, Group desiredFurniture) {
         int i;
 
         for (i = 0; i < furniture.length; i++) {
@@ -141,7 +151,6 @@ public class UserCreatingFurniture {
 
         newFurniture[i] = desiredFurniture;
         furniture = newFurniture;
-
     }
 
     void spawnFurniture() {
