@@ -20,9 +20,6 @@ import static edu.bsu.cs222.InteractiveFeatures.currentDorm;
 public class UserCreatingFurniture {
 
     public static Node[] furniture = new Node[]{};
-    public String[] furnitureNameArray = {"Bed.jpg", "Chair.png", "Wardrobe.png",
-            "Trashcan.png", "Drawers.png", "Desk.png"};
-
 
     public Pane getCustomFurniture() {
         GridPane gridPane = new GridPane();
@@ -81,11 +78,15 @@ public class UserCreatingFurniture {
         if (type == 0)
             newBox.getItems().addAll(1, 2, 3, 4, 5, 6, 7, 8);
         if (type == 1)
-            newBox.getItems().addAll(features.dormNames);
+            newBox.getItems().addAll("Dehority",
+                    "Park", "Beyerl", "Botsford-Swinford", "Kinghorn",
+                    "North West", "Noyer", "Schmidt-Wilson", "Studebaker East",
+                    "Studebaker West", "Woodworth");
         if (type == 2)
             newBox.getItems().addAll(1, 2);
         if (type == 3)
-            newBox.getItems().addAll(furnitureNameArray);
+            newBox.getItems().addAll("Bed.jpg", "Chair.png", "Wardrobe.png",
+                    "Trashcan.png", "Drawers.png", "Desk.png");
 
 
         newBox.getSelectionModel().select(0);

@@ -13,11 +13,6 @@ import java.util.ArrayList;
 public class InteractiveFeatures extends DraggableNodePaneMaker {
 
     public static String currentDorm = "Dehority";
-    public String[] dormNames = {"Dehority",
-    "Park", "Beyerl", "Botsford-Swinford", "Kinghorn",
-    "North West", "Noyer", "Schmidt-Wilson", "Studebaker East",
-    "Studebaker West", "Woodworth"};
-
 
     public Pane getDormRoom() {
         GridPane gridPane = new GridPane();
