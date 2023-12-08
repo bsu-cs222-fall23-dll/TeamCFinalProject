@@ -18,7 +18,7 @@ public class InteractiveFeatures extends DraggableNodePaneMaker {
         GridPane gridPane = new GridPane();
         UserCreatingFurniture furnitureFunction = new UserCreatingFurniture();
         Button dormRoomButton = new Button("Select Dorm");
-        ArrayList<ChoiceBox> choiceBoxes = new ArrayList<>();
+        ArrayList<ChoiceBox<String>> choiceBoxes = new ArrayList<ChoiceBox<String>>();
         dormRoomButton.setOnAction(e -> {
             try {
                 gridPane.add(clickedDormRoomButton(choiceBoxes),2,3);
@@ -27,13 +27,13 @@ public class InteractiveFeatures extends DraggableNodePaneMaker {
             }
         });
 
-        gridPane.add(furnitureFunction.getSizeBox(choiceBoxes,1),0,1);
+        gridPane.add(furnitureFunction.getStringChoice(choiceBoxes,0),0,1);
 
         gridPane.add(dormRoomButton,0,2);
         return gridPane;
     }
 
-    public Pane clickedDormRoomButton(ArrayList<ChoiceBox> choices) throws FileNotFoundException {
+    public Pane clickedDormRoomButton(ArrayList<ChoiceBox<String>> choices) throws FileNotFoundException {
         UserCreatingFurniture furnitureFunction = new UserCreatingFurniture();
         String chosenDorm = furnitureFunction.getChoice(choices.get(0));
         GridPane gridPane = new GridPane();

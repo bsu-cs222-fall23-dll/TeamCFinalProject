@@ -24,7 +24,7 @@ public class UserCreatingFurniture {
     public Pane getCustomFurniture() {
         GridPane gridPane = new GridPane();
         Button furnitureButton = new Button("Add New Object");
-        ArrayList<ChoiceBox> choiceBoxes = new ArrayList<>();
+        ArrayList<ChoiceBox<Integer>> choiceBoxes = new ArrayList<ChoiceBox<Integer>>();
         furnitureButton.setOnAction(e -> {
             try {
                 clickedCustomFurnitureButton(choiceBoxes);
@@ -37,9 +37,9 @@ public class UserCreatingFurniture {
         Text heightTest = new Text("Height in feet");
 
         gridPane.add(widthText, 0, 1);
-        gridPane.add(getSizeBox(choiceBoxes, 0), 1, 1);
+        gridPane.add(getIntChoice(choiceBoxes, 0), 1, 1);
         gridPane.add(heightTest, 0, 2);
-        gridPane.add(getSizeBox(choiceBoxes, 0), 1, 2);
+        gridPane.add(getIntChoice(choiceBoxes, 0), 1, 2);
         gridPane.add(furnitureButton, 0, 3);
         return gridPane;
     }
@@ -47,16 +47,16 @@ public class UserCreatingFurniture {
     public Pane getExistingFurniture() {
         GridPane gridPane = new GridPane();
         Button furnitureButton = new Button("Add Furniture");
-        ArrayList<ChoiceBox> choiceBoxes2 = new ArrayList<>();
+        ArrayList<ChoiceBox<String>> choiceBoxes = new ArrayList<ChoiceBox<String>>();
         furnitureButton.setOnAction(e -> {
             try {
-                clickedExistingFurnitureButton(choiceBoxes2);
+                clickedExistingFurnitureButton(choiceBoxes);
             } catch (FileNotFoundException ex) {
                 throw new RuntimeException(ex);
             }
         });
 
-        gridPane.add(getSizeBox(choiceBoxes2, 3), 1, 1);
+        gridPane.add(getStringChoice(choiceBoxes, 1), 1, 1);
         gridPane.add(furnitureButton, 1, 2);
 
         return gridPane;
@@ -72,22 +72,28 @@ public class UserCreatingFurniture {
         return gridPane;
     }
 
-    public ChoiceBox getSizeBox(ArrayList<ChoiceBox> choiceBoxes, int type) {
-        InteractiveFeatures features = new InteractiveFeatures();
-        ChoiceBox newBox = new ChoiceBox();
+    public ChoiceBox<String> getStringChoice(ArrayList<ChoiceBox<String>> choiceBoxes, int type) {
+        ChoiceBox<String> newBox = new ChoiceBox<String>();
         if (type == 0)
-            newBox.getItems().addAll(1, 2, 3, 4, 5, 6, 7, 8);
-        if (type == 1)
             newBox.getItems().addAll("Dehority",
                     "Park", "Beyerl", "Botsford-Swinford", "Kinghorn",
                     "North West", "Noyer", "Schmidt-Wilson", "Studebaker East",
                     "Studebaker West", "Woodworth");
-        if (type == 2)
-            newBox.getItems().addAll(1, 2);
-        if (type == 3)
+        if (type == 1)
             newBox.getItems().addAll("Bed.jpg", "Chair.png", "Wardrobe.png",
                     "Trashcan.png", "Drawers.png", "Desk.png");
 
+        newBox.getSelectionModel().select(0);
+        choiceBoxes.add(newBox);
+        return newBox;
+    }
+
+    public ChoiceBox<Integer> getIntChoice(ArrayList<ChoiceBox<Integer>> choiceBoxes, int type) {
+        ChoiceBox<Integer> newBox = new ChoiceBox<Integer>();
+        if (type == 0)
+            newBox.getItems().addAll(1, 2, 3, 4, 5, 6, 7, 8);
+        if (type == 1)
+            newBox.getItems().addAll(1, 2);
 
         newBox.getSelectionModel().select(0);
         choiceBoxes.add(newBox);
@@ -98,13 +104,13 @@ public class UserCreatingFurniture {
         return choice.getValue().toString();
     }
 
-    public void clickedExistingFurnitureButton(ArrayList<ChoiceBox> choiceBoxes2) throws FileNotFoundException {
+    public void clickedExistingFurnitureButton(ArrayList<ChoiceBox<String>> choiceBoxes2) throws FileNotFoundException {
         String chosenFurniture = getChoice(choiceBoxes2.get(0));
 
         addOldFurniture(chosenFurniture);
     }
 
-    public void clickedCustomFurnitureButton(ArrayList<ChoiceBox> choices) throws FileNotFoundException {
+    public void clickedCustomFurnitureButton(ArrayList<ChoiceBox<Integer>> choices) throws FileNotFoundException {
         int furnitureWidth = Integer.parseInt(getChoice(choices.get(0)));
         int furnitureHeight = Integer.parseInt(getChoice(choices.get(1)));
 
