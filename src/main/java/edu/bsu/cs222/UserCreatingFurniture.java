@@ -24,7 +24,7 @@ public class UserCreatingFurniture {
     public Pane getCustomFurniture() {
         GridPane gridPane = new GridPane();
         Button furnitureButton = new Button("Add New Object");
-        ArrayList<ChoiceBox<Integer>> choiceBoxes = new ArrayList<ChoiceBox<Integer>>();
+        ArrayList<ChoiceBox<Integer>> choiceBoxes = new ArrayList<>();
         furnitureButton.setOnAction(e -> {
             try {
                 clickedCustomFurnitureButton(choiceBoxes);
@@ -47,7 +47,7 @@ public class UserCreatingFurniture {
     public Pane getExistingFurniture() {
         GridPane gridPane = new GridPane();
         Button furnitureButton = new Button("Add Furniture");
-        ArrayList<ChoiceBox<String>> choiceBoxes = new ArrayList<ChoiceBox<String>>();
+        ArrayList<ChoiceBox<String>> choiceBoxes = new ArrayList<>();
         furnitureButton.setOnAction(e -> {
             try {
                 clickedExistingFurnitureButton(choiceBoxes);
@@ -73,7 +73,7 @@ public class UserCreatingFurniture {
     }
 
     public ChoiceBox<String> getStringChoice(ArrayList<ChoiceBox<String>> choiceBoxes, int type) {
-        ChoiceBox<String> newBox = new ChoiceBox<String>();
+        ChoiceBox<String> newBox = new ChoiceBox<>();
         if (type == 0)
             newBox.getItems().addAll("Dehority",
                     "Park", "Beyerl", "Botsford-Swinford", "Kinghorn",
@@ -89,7 +89,7 @@ public class UserCreatingFurniture {
     }
 
     public ChoiceBox<Integer> getIntChoice(ArrayList<ChoiceBox<Integer>> choiceBoxes, int type) {
-        ChoiceBox<Integer> newBox = new ChoiceBox<Integer>();
+        ChoiceBox<Integer> newBox = new ChoiceBox<>();
         if (type == 0)
             newBox.getItems().addAll(1, 2, 3, 4, 5, 6, 7, 8);
         if (type == 1)
@@ -100,19 +100,15 @@ public class UserCreatingFurniture {
         return newBox;
     }
 
-    public String getChoice(ChoiceBox choice) {
-        return choice.getValue().toString();
-    }
-
     public void clickedExistingFurnitureButton(ArrayList<ChoiceBox<String>> choiceBoxes2) throws FileNotFoundException {
-        String chosenFurniture = getChoice(choiceBoxes2.get(0));
+        String chosenFurniture = choiceBoxes2.get(0).getValue();
 
         addOldFurniture(chosenFurniture);
     }
 
     public void clickedCustomFurnitureButton(ArrayList<ChoiceBox<Integer>> choices) throws FileNotFoundException {
-        int furnitureWidth = Integer.parseInt(getChoice(choices.get(0)));
-        int furnitureHeight = Integer.parseInt(getChoice(choices.get(1)));
+        int furnitureWidth = choices.get(0).getValue();
+        int furnitureHeight = choices.get(1).getValue();
 
         addCustomFurniture(furnitureHeight, furnitureWidth);
     }
