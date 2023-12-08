@@ -156,8 +156,17 @@ public class UICompiler extends Application {
 
         Text title = new Text("Dorm Key: ");
         Label label;
-        String key = null;
         title.setFont(Font.font("Arial", FontWeight.BOLD, 20));
+
+        String key = returnDormFurnitureInfo(dormName);
+
+        label = new Label(key);
+        hbox.getChildren().addAll(title, label);
+        return hbox;
+    }
+
+    public String returnDormFurnitureInfo(String dormName) {
+        String key = null;
         switch (dormName) {
             case "Dehority", "Noyer", "Studebaker West", "Woodworth" -> {
                 key = """
@@ -200,9 +209,7 @@ public class UICompiler extends Application {
             }
         }
 
-        label = new Label(key);
-        hbox.getChildren().addAll(title, label);
-        return hbox;
+        return key;
     }
 
     public String dormRoomInfo(String buttonName) {
