@@ -13,17 +13,12 @@ import java.util.ArrayList;
 public class InteractiveFeatures extends DraggableNodePaneMaker {
 
     public static String currentDorm = "Dehority";
-    public String[] dormNames = {"Dehority",
-    "Park", "Beyerl", "Botsford-Swinford", "Kinghorn",
-    "North West", "Noyer", "Schmidt-Wilson", "Studebaker East",
-    "Studebaker West", "Woodworth"};
-
 
     public Pane getDormRoom() {
         GridPane gridPane = new GridPane();
         UserCreatingFurniture furnitureFunction = new UserCreatingFurniture();
         Button dormRoomButton = new Button("Select Dorm");
-        ArrayList<ChoiceBox> choiceBoxes = new ArrayList<>();
+        ArrayList<ChoiceBox<String>> choiceBoxes = new ArrayList<>();
         dormRoomButton.setOnAction(e -> {
             try {
                 gridPane.add(clickedDormRoomButton(choiceBoxes),2,3);
@@ -32,15 +27,14 @@ public class InteractiveFeatures extends DraggableNodePaneMaker {
             }
         });
 
-        gridPane.add(furnitureFunction.getSizeBox(choiceBoxes,1),0,1);
+        gridPane.add(furnitureFunction.getStringChoice(choiceBoxes,0),0,1);
 
         gridPane.add(dormRoomButton,0,2);
         return gridPane;
     }
 
-    public Pane clickedDormRoomButton(ArrayList<ChoiceBox> choices) throws FileNotFoundException {
-        UserCreatingFurniture furnitureFunction = new UserCreatingFurniture();
-        String chosenDorm = furnitureFunction.getChoice(choices.get(0));
+    public Pane clickedDormRoomButton(ArrayList<ChoiceBox<String>> choices) throws FileNotFoundException {
+        String chosenDorm = choices.get(0).getValue();
         GridPane gridPane = new GridPane();
         Pane image = getDormImage(chosenDorm);
 

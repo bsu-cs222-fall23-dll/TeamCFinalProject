@@ -27,7 +27,7 @@ public class UICompiler extends Application {
         borderPane.setRight(vBoxCustomFurniture);
 
         primaryStage.setScene(new Scene(borderPane));
-        primaryStage.setWidth(1200);
+        primaryStage.setWidth(1300);
         primaryStage.setHeight(850);
         primaryStage.show();
 
