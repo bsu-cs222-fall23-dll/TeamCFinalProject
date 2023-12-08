@@ -179,7 +179,6 @@ public class UICompiler extends Application {
                         Closet(s): 0
                         """;
                 closetCount = 0;
-                System.out.println(closetCount + "");
             }
             case "Beyerl", "Schmidt-Wilson", "North West", "Botsford-Swinford" -> {
                 key = """
@@ -192,7 +191,6 @@ public class UICompiler extends Application {
                         Closet(s): 2
                         """;
                 closetCount = 2;
-                System.out.println(closetCount + "");
             }
             case "Park", "Studebaker East", "Kinghorn" -> {
                 key = """
@@ -205,7 +203,6 @@ public class UICompiler extends Application {
                         Closet(s): 1
                         """;
                 closetCount = 1;
-                System.out.println(closetCount + "");
             }
         }
 
